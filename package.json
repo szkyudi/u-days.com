@@ -1,0 +1,24 @@
+{
+  "name": "learn-starter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "deploy": "npm run buid && npm run export"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.35",
+    "contentful": "^7.14.6",
+    "date-fns": "^2.16.1",
+    "destyle.css": "^1.0.15",
+    "gray-matter": "^4.0.2",
+    "next": "9.3.5",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "remark": "^12.0.1",
+    "remark-html": "^12.0.0"
+  }
+}
