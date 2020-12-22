@@ -10,8 +10,8 @@
     "deploy": "npm run build && npm run export"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.35",
-    "contentful": "^7.14.6",
+    "@emotion/core": "^10.1.1",
+    "contentful": "^7.15.2",
     "date-fns": "^2.16.1",
     "destyle.css": "^1.0.15",
     "gray-matter": "^4.0.2",
