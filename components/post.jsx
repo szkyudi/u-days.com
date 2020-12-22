@@ -21,6 +21,21 @@ const postTitle = css`
   line-height: 1.4;
 `
 
+const postTags = css`
+  margin-top: 16px;
+`
+
+const postImg = css`
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+`
+
+const postDate = css`
+  font-size: 14px;
+  margin-top: 16px;
+`
+
 const postContent = css`
   line-height: 1.8;
   h2, h3, h4, h5, h6 {
