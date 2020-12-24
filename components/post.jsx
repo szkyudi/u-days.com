@@ -95,7 +95,7 @@ export default function Post({ postData }) {
               <Tag slug={tag.slug}>{tag.name}</Tag>
             )) : ''}
           </div>
-          {postData.thumbnail.url ? <img css={postImg} src={postData.thumbnail.url} alt={postData.thumbnail.alt} /> : ''}
+          {postData.thumbnail ? <img css={postImg} src={postData.thumbnail.url} alt={postData.thumbnail.alt} /> : ''}
         </header>
         <div css={postContent} dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </section>
