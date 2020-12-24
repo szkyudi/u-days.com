@@ -1,9 +1,12 @@
 /** @jsx jsx */
-import Date from './atoms/Date'
-import Tag from './atoms/Tag'
 import { jsx, css } from '@emotion/core'
-import variables from '../lib/styles/variables'
-import utils from '../lib/styles/utils'
+import Head from 'next/head'
+import Header from '../organisms/Header'
+import Footer from '../organisms/Footer'
+import Date from '../atoms/Date'
+import Tag from '../atoms/Tag'
+import variables from '../../lib/styles/variables'
+import utils from '../../lib/styles/utils'
 
 const section = css`
   ${utils.contianer}
@@ -86,19 +89,26 @@ const postContent = css`
 export default function Post({ postData }) {
   return (
     <>
-      <section css={section}>
-        <header css={postHeader}>
-          <h1 css={postTitle}>{postData.title}</h1>
-          <Date css={postDate} dateString={postData.publishedAt} />
-          <div css={postTags}>
-            {postData.tags ? postData.tags.map(tag => (
-              <Tag key={tag.slug} slug={tag.slug}>{tag.name}</Tag>
-            )) : ''}
-          </div>
-          {postData.thumbnail ? <img css={postImg} src={postData.thumbnail.url} alt={postData.thumbnail.alt} /> : ''}
-        </header>
-        <div css={postContent} dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-      </section>
+      <Head>
+        <title>{postData.title}｜u-days</title>
+      </Head>
+      <Header />
+      <main>
+        <section css={section}>
+          <header css={postHeader}>
+            <h1 css={postTitle}>{postData.title}</h1>
+            <Date css={postDate} dateString={postData.publishedAt} />
+            <div css={postTags}>
+              {postData.tags ? postData.tags.map(tag => (
+                <Tag key={tag.slug} slug={tag.slug}>{tag.name}</Tag>
+              )) : ''}
+            </div>
+            {postData.thumbnail ? <img css={postImg} src={postData.thumbnail.url} alt={postData.thumbnail.alt} /> : ''}
+          </header>
+          <div css={postContent} dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        </section>
+      </main>
+      <Footer />
     </>
   )
 }

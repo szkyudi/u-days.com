@@ -1,22 +1,7 @@
 /** @jsx jsx */
-import Head from 'next/head'
-import Layout from '../../components/layout'
-import Post from '../../components/post'
-import { getAllPostsIds, getPostData } from '../../lib/posts'
 import { jsx, css } from '@emotion/core'
-
-export default function PostPage({ postData }) {
-  return (
-    <Layout>
-      <Head>
-        <title>{postData.title}</title>
-      </Head>
-      <main>
-        <Post postData={postData} />
-      </main>
-    </Layout>
-  )
-}
+import PostTemplate from '../../components/templates/Post'
+import { getAllPostsIds, getPostData } from '../../lib/posts'
 
 export async function getStaticPaths() {
   const paths = await getAllPostsIds()
@@ -33,4 +18,8 @@ export async function getStaticProps({ params }) {
       postData
     }
   }
+}
+
+export default function Post({ postData }) {
+  return <PostTemplate postData={postData} />
 }
