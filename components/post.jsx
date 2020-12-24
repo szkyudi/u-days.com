@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import Date from './atoms/Date'
-import Tag from './tag'
+import Tag from './atoms/Tag'
 import { jsx, css } from '@emotion/core'
 import variables from '../lib/styles/variables'
 import utils from '../lib/styles/utils'

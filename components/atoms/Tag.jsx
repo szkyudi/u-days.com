@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import Link from 'next/link'
 import { jsx, css } from '@emotion/core'
-import variables from '../lib/styles/variables'
+import variables from '../../lib/styles/variables'
 
 const tag = css`
   display: inline-block;
