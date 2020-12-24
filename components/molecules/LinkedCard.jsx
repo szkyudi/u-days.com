@@ -1,7 +1,8 @@
 /** @jsx jsx */
+import Link from 'next/link'
 import { jsx, css } from '@emotion/core'
-import variables from '../lib/styles/variables'
-import Date from './atoms/Date'
+import variables from '../../lib/styles/variables'
+import Date from '../atoms/Date'
 
 const card = css`
   display: block;
@@ -10,6 +11,7 @@ const card = css`
   box-shadow: ${variables.shadow.dp1};
   transition: .2s;
   &:hover {
+    cursor: pointer;
     box-shadow: ${variables.shadow.dp4};
   }
   & + & {
@@ -28,13 +30,13 @@ const cardDate = css`
   margin-top: 12px;
 `
 
-const PostCard = React.forwardRef(({ onClick, href, publishedAt, title }, ref) => {
+export default function LinkedCard({href, title, date}) {
   return (
-    <a href={href} onClick={onClick} css={card}>
-      <h3 css={cardTitle}>{title}</h3>
-      <Date css={cardDate} dateString={publishedAt} />
-    </a>
+    <Link href={href}>
+      <a css={card}>
+        <h3 css={cardTitle}>{title}</h3>
+        <Date css={cardDate} dateString={date} />
+      </a>
+    </Link>
   )
-})
-
-export default PostCard
+}

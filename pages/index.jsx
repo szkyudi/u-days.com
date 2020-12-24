@@ -1,9 +1,8 @@
 /** @jsx jsx */
 import Head from 'next/head'
-import Link from 'next/link'
 import {jsx, css } from '@emotion/core'
 import Layout from '../components/layout'
-import PostCard from '../components/postCard'
+import LinkedCard from '../components/molecules/LinkedCard'
 import Title from '../components/title'
 import { getSortedPostsData } from '../lib/posts'
 import variables from '../lib/styles/variables'
@@ -36,9 +35,7 @@ export default function Home({ allPostsData }) {
       <main css={main}>
         <Title css={title}>Blog</Title>
         {allPostsData.map(({ id, publishedAt, title }) => (
-          <Link key={id} href={`/posts/${id}`} passHref>
-            <PostCard publishedAt={publishedAt} title={title} />
-          </Link>
+          <LinkedCard key={id} href={`/posts/${id}`} title={title} date={publishedAt} />
         ))}
       </main>
     </Layout>
