@@ -92,7 +92,7 @@ export default function Post({ postData }) {
           <Date css={postDate} dateString={postData.publishedAt} />
           <div css={postTags}>
             {postData.tags ? postData.tags.map(tag => (
-              <Tag slug={tag.slug}>{tag.name}</Tag>
+              <Tag key={tag.slug} slug={tag.slug}>{tag.name}</Tag>
             )) : ''}
           </div>
           {postData.thumbnail ? <img css={postImg} src={postData.thumbnail.url} alt={postData.thumbnail.alt} /> : ''}
