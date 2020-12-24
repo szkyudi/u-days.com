@@ -1,8 +1,10 @@
 /** @jsx jsx */
-import Tag from './tag'
 import { jsx, css } from '@emotion/core'
-import variables from '../lib/styles/variables'
-import utils from '../lib/styles/utils'
+import Head from 'next/head'
+import variables from '../../lib/styles/variables'
+import utils from '../../lib/styles/utils'
+import Header from '../../components/organisms/Header'
+import Footer from '../../components/organisms/Footer'
 
 const section = css`
   ${utils.contianer}
@@ -67,15 +69,20 @@ const postContent = css`
   }
 `
 
-export default function Post({ pageData }) {
+export default function Page({ pageData }) {
   return (
     <>
+      <Head>
+        <title>{pageData.title}｜u-days</title>
+      </Head>
+      <Header />
       <section css={section}>
         <header css={postHeader}>
           <h1 css={postTitle}>{pageData.title}</h1>
         </header>
         <div css={postContent} dangerouslySetInnerHTML={{ __html: pageData.contentHtml }} />
       </section>
+      <Footer />
     </>
   )
 }
