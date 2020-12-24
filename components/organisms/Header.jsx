@@ -6,7 +6,7 @@ import HeaderLogo from '../molecules/HeaderLogo'
 
 const header = css`
   background: ${variables.color.primary};
-  box-shadow: ${variables.shadow.dp2};
+  box-shadow: ${variables.shadow.dp4};
 `
 
 const container = css`
