@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import variables from '../lib/styles/variables'
-import Date from './date'
+import Date from './atoms/Date'
 
 const card = css`
   display: block;
