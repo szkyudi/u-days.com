@@ -1,6 +1,4 @@
-import Head from 'next/head'
-import Link from 'next/link'
-import Header from './header'
+import Header from './organisms/Header'
 import Footer from './footer'
 
 const name = 'Yudai'
