@@ -1,12 +1,11 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
-import React from 'react'
-import Router from 'next/router'
+import React, { setGlobal, useGlobal } from 'reactn'
 import utils from '../../lib/styles/utils'
 import variables from '../../lib/styles/variables'
 import HeaderLogo from '../molecules/HeaderLogo'
-import SearchIcon from '@material-ui/icons/Search'
-import CloseIcon from '@material-ui/icons/Close'
+import SearchButton from '../atoms/SearchButton'
+import SearchBar from '../atoms/SearchBar'
 
 
 const header = css`
@@ -24,40 +23,21 @@ const container = css`
   padding: ${variables.padding.md};
 `;
 
-const button = css`
-  cursor: pointer;
-`
-
 const aside = css`
-  position: relative;
   display: none;
-  z-index: 1;
+  position: absolute;
+  width: 100%;
+  margin-top: ${variables.margin.md};
 `
 
 const isActive = css`
   display: block;
 `
 
-const bar = css`
-  position: absolute;
-  width: 100%;
-  padding: ${variables.padding.md} 0;
-  z-index: 2;
-`
-
 const barContainer = css`
   ${utils.contianer}
-`
-
-const input = css`
-  display: block;
-  width: 100%;
-  padding: ${variables.padding.sm};
-  border: 1px solid ${variables.color.primaryVariant};
-  border-radius: 2px;
-  font-size: 14px;
-  color: ${variables.color.onPrimary};
-  background: ${variables.color.background};
+  position: relative;
+  z-index: 2;
 `
 
 const overlay = css`
@@ -69,85 +49,31 @@ const overlay = css`
   z-index: 1;
 `
 
-export default class Header extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isSearchBarActive: false,
-      searchInputValue: ''
-    }
-    this.searchInput = React.createRef()
-  }
+setGlobal({isSearchBarActive: false})
 
-  componentDidUpdate = () => {
-    if (this.state.isSearchBarActive) {
-      this.searchInput.current.focus()
-    }
+export default function Header() {
+  const [isSearchBarActive, setIsSearchBarActive] = useGlobal('isSearchBarActive')
+  
+  function inactivateSearchBar() {
+    setIsSearchBarActive(false);
   }
   
-  toggleSearchBar = (e) => {
-    e.preventDefault();
-    if (this.state.isSearchBarActive) {
-      this.setState({ isSearchBarActive: false })
-    } else {
-      this.searchInput.current.select()
-      this.setState({ isSearchBarActive: true })
-    }
-  }
-
-  getSearchPage = (e) => {
-    e.preventDefault();
-    this.setState({ isSearchBarActive: false })
-    if (!this.state.searchInputValue) {
-      Router.push('/')
-      return
-    }
-    Router.push({
-      pathname: '/search',
-      query: { keyword: this.state.searchInputValue }
-    })
-  }
-
-  changeSearchInput = (e) => {
-    e.preventDefault();
-    this.setState({ searchInputValue: this.searchInput.current.value })
-  }
-
-  render = () => {
-    const ToggleButton = () => {
-      if (this.state.isSearchBarActive) {
-        return <CloseIcon css={button} onClick={this.toggleSearchBar}/>
-      } else {
-        return <SearchIcon css={button} onClick={this.toggleSearchBar}/>
-      }
-    }
-
-    return (
-      <>
-        <header>
-          <div css={header}>
-            <div css={container}>
-              <HeaderLogo />
-              <ToggleButton />
-            </div>
+  return (
+    <>
+      <header>
+        <div css={header}>
+          <div css={container}>
+            <HeaderLogo />
+            <SearchButton />
           </div>
-        </header>
-        <aside css={[aside, this.state.isSearchBarActive && isActive]}>
-          <div css={bar}>
-            <form css={barContainer} onSubmit={this.getSearchPage}>
-              <input 
-                ref={this.searchInput}
-                css={input}
-                type="text"
-                value={this.state.searchInputValue}
-                onChange={this.changeSearchInput}
-                placeholder="検索キーワード"
-              />
-            </form>
-          </div>
-          <div css={overlay} onClick={this.toggleSearchBar}/>
-        </aside>
-      </>
-    )
-  }
+        </div>
+      </header>
+      <aside css={[aside, isSearchBarActive && isActive]}>
+        <div css={barContainer}>
+          <SearchBar focus={true} />
+        </div>
+        <div css={overlay} onClick={inactivateSearchBar}/>
+      </aside>
+    </>
+  )
 }
