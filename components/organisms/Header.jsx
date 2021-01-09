@@ -41,8 +41,12 @@ const isActive = css`
 const bar = css`
   position: absolute;
   width: 100%;
-  padding: ${variables.padding.md};
+  padding: ${variables.padding.md} 0;
   z-index: 2;
+`
+
+const barContainer = css`
+  ${utils.contianer}
 `
 
 const input = css`
@@ -130,7 +134,7 @@ export default class Header extends React.Component {
         </header>
         <aside css={[aside, this.state.isSearchBarActive && isActive]}>
           <div css={bar}>
-            <form onSubmit={this.getSearchPage}>
+            <form css={barContainer} onSubmit={this.getSearchPage}>
               <input 
                 ref={this.searchInput}
                 css={input}
