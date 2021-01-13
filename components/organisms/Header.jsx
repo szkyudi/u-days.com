@@ -25,7 +25,7 @@ const container = css`
 `;
 
 const aside = css`
-  margin-top: -40px;
+  margin-top: -48px;
   position: absolute;
   width: 100%;
   transition: .2s ease-out;
