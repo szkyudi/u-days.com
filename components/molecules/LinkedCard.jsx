@@ -10,12 +10,14 @@ const card = css`
   background: ${variables.color.surface};
   box-shadow: ${variables.shadow.dp1};
   transition: .2s;
+  ${variables.rounded}
   &:hover {
     cursor: pointer;
-    box-shadow: ${variables.shadow.dp4};
+    box-shadow: ${variables.shadow.dp2};
+    transform: translateY(-1px);
   }
   & + & {
-    margin-top: 16px;
+    margin-top: ${variables.space.sm};
   }
 `
 

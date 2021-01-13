@@ -11,16 +11,18 @@ const list = css`
 `
 
 const listItem = css`
+  transition: .2s;
   &:hover {
     opacity: 0.6;
   }
   & + & {
-    margin-left: 4px;
+    margin-left: ${variables.space.md};
   }
 `
 
 const listLink = css`
-  padding: 0 1em;
+  padding: ${variables.space.xs};
+  margin: -${variables.space.xs};
   &:hover {
     cursor: pointer;
   }

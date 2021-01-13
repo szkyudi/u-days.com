@@ -7,7 +7,7 @@ import Copyright from '../atoms/Copyright'
 import FooterList from '../molecules/FooterList'
 
 const footer = css`
-  margin-top: ${variables.margin.xl};
+  margin-top: ${variables.space.xl};
   padding: 24px 0 32px;
   background: ${variables.color.primary};
 `
