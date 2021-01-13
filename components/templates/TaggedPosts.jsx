@@ -9,8 +9,8 @@ import variables from '../../lib/styles/variables'
 import utils from '../../lib/styles/utils'
 
 const title = css`
-  margin-top: ${variables.margin.lg};
-  margin-bottom: ${variables.margin.md};
+  margin-top: ${variables.space.lg};
+  margin-bottom: ${variables.space.md};
   font-size: 24px;
   font-weight: bold;
   color: ${variables.color.onBackground};

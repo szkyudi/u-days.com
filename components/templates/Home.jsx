@@ -8,7 +8,7 @@ import variables from '../../lib/styles/variables'
 import utils from '../../lib/styles/utils'
 
 const title = css`
-  margin: ${variables.margin.lg} 0 ${variables.margin.md};
+  margin: ${variables.space.lg} 0 ${variables.space.md};
   font-size: 24px;
   font-weight: bold;
   color: ${variables.color.onBackground};
@@ -25,7 +25,7 @@ export default function Home({ allPostsData }) {
       </Head>
       <Header />
       <main css={main}>
-        <h2 css={title}>Blog</h2>
+        <h2 css={title}>新着記事一覧</h2>
         {allPostsData.map(({ id, publishedAt, title }) => (
           <LinkedCard key={id} href={`/posts/${id}`} title={title} date={publishedAt} />
         ))}
