@@ -8,15 +8,15 @@ import variables from '../../lib/styles/variables'
 const input = css`
   display: block;
   width: 100%;
-  padding: ${variables.padding.sm};
+  padding: .5em;
   border: 1px solid ${variables.color.primaryVariant};
   border-radius: 2px;
-  font-size: 14px;
+  font-size: 16px;
   color: ${variables.color.onPrimary};
   background: ${variables.color.background};
 `
 
-export default function SearchBar(focus = false) {
+export default function SearchBar(props) {
   const [_, setIsActive] = useGlobal('isSearchBarActive')
   const [selected, setSelected] = useGlobal('selectedSearchInput')
   const [inputValue, setInputValue] = useState('')
@@ -45,14 +45,15 @@ export default function SearchBar(focus = false) {
       inputElement.current.select()
       setSelected(false)
     }
-    if (focus) {
+    if (props.focus) {
       inputElement.current.focus()
     }
   })
   
   return (
     <form onSubmit={getSearchPage}>
-      <input 
+      <input
+        className={props.className}
         ref={inputElement}
         css={input}
         type="text"
