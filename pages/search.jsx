@@ -1,5 +1,3 @@
-/** @jsx jsx */
-import { jsx, css } from '@emotion/core'
 import SearchTemplate from '../components/templates/Search'
 import { getSortedPostsData } from '../lib/posts'
 

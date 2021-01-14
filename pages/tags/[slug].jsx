@@ -1,5 +1,3 @@
-/** @jsx jsx */
-import {jsx, css } from '@emotion/core'
 import { getTaggedPostsData } from '../../lib/posts'
 import { getAllTagsIds, getTagData } from '../../lib/tags'
 import TaggedPosts from '../../components/templates/TaggedPosts'

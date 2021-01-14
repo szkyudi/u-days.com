@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
 import { useGlobal } from 'reactn'
 import { useState, useEffect, useRef } from 'react'
 import Router from 'next/router'
