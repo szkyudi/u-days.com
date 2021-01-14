@@ -4,7 +4,11 @@ import SearchIcon from '@material-ui/icons/Search'
 import CloseIcon from '@material-ui/icons/Close'
 
 const button = css`
-  cursor: pointer;
+  transition: .2s;
+  &:hover {
+    cursor: pointer;
+    opacity: .6;
+  }
 `
 
 setGlobal({selectedSearchInput: true})
