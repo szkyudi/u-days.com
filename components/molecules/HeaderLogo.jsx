@@ -1,19 +1,26 @@
-/** @jsx jsx */
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
 import Link from 'next/link'
-import { jsx, css } from '@emotion/core'
-import variables from '../../lib/styles/variables'
+import Image from 'next/image'
 
-const title = css`
-  font-size: 24px;
-  font-weight: bold;
-  color: ${variables.color.onPrimary};
+const imageWrapper = css`
+  display: block;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  cursor: pointer;
 `
 
 export default function HeaderLogo() {
   return (
-    <h1 css={title}>
+    <h1>
       <Link href="/">
-        <a>u-days</a>
+        <a css={imageWrapper}>
+          <Image
+            src="/logo.svg"
+            layout="fill"
+          />
+        </a>
       </Link>
     </h1>
   )

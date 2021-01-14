@@ -1,6 +1,6 @@
-/** @jsx jsx */
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
 import Link from 'next/link'
-import { jsx, css } from '@emotion/core'
 import variables from '../../lib/styles/variables'
 import Date from '../atoms/Date'
 
