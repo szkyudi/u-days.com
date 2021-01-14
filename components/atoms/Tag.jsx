@@ -13,6 +13,7 @@ const tag = css`
   &:hover {
     cursor: pointer;
     box-shadow: ${variables.shadow.dp1};
+    transform: translateY(-1px);
   }
 `
 
