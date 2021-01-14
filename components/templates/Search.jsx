@@ -1,6 +1,6 @@
-/** @jsx jsx */
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
 import Head from 'next/head'
-import {jsx, css } from '@emotion/core'
 import Header from '../organisms/Header'
 import Footer from '../organisms/Footer'
 import LinkedCard from '../molecules/LinkedCard'

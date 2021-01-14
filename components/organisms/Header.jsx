@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
 import React, { setGlobal, useGlobal } from 'reactn'
 import utils from '../../lib/styles/utils'
 import variables from '../../lib/styles/variables'
@@ -25,7 +25,7 @@ const container = css`
 `;
 
 const aside = css`
-  margin-top: -40px;
+  margin-top: -48px;
   position: absolute;
   width: 100%;
   transition: .2s ease-out;
