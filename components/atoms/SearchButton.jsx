@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import React, { useGlobal, setGlobal } from 'reactn'
 import SearchIcon from '@material-ui/icons/Search'
