@@ -17,7 +17,7 @@ const input = css`
 `
 
 export default function SearchBar(props) {
-  const [_, setIsActive] = useGlobal('isSearchBarActive')
+  const [isActive, setIsActive] = useGlobal('isSearchBarActive')
   const [selected, setSelected] = useGlobal('selectedSearchInput')
   const [inputValue, setInputValue] = useState('')
   const inputElement = useRef(null)
@@ -47,6 +47,9 @@ export default function SearchBar(props) {
     }
     if (props.focus) {
       inputElement.current.focus()
+    }
+    if (!isActive) {
+      inputElement.current.blur()
     }
   })
   
