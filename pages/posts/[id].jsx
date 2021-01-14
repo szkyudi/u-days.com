@@ -1,5 +1,3 @@
-/** @jsx jsx */
-import { jsx, css } from '@emotion/core'
 import PostTemplate from '../../components/templates/Post'
 import { getAllPostsIds, getPostData } from '../../lib/posts'
 

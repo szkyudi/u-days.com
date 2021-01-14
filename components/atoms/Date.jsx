@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
 import { parseISO, format } from 'date-fns'
 
 export default function Data({ className, dateString }) {

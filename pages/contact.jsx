@@ -1,5 +1,3 @@
-/** @jsx jsx */
-import { jsx, css } from '@emotion/core'
 import PageTemplate from '../components/templates/Page'
 import { getPageData } from '../lib/pages'
 

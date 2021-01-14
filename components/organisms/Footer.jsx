@@ -1,6 +1,5 @@
-/** @jsx jsx */
-import Link from 'next/link'
-import { jsx, css } from '@emotion/core'
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
 import variables from '../../lib/styles/variables'
 import utils from '../../lib/styles/utils'
 import Copyright from '../atoms/Copyright'
