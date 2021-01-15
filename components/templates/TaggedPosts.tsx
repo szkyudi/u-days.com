@@ -1,8 +1,8 @@
 import { css } from '@emotion/react'
 import Head from 'next/head'
-import Header from '../../components/organisms/Header'
-import Footer from '../../components/organisms/Footer'
-import LinkedCard from '../../components/molecules/LinkedCard'
+import Header from '../organisms/Header'
+import Footer from '../organisms/Footer'
+import LinkedCard from '../molecules/LinkedCard'
 import variables from '../../lib/styles/variables'
 import utils from '../../lib/styles/utils'
 
