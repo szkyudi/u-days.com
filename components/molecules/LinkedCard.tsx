@@ -38,7 +38,9 @@ export default function LinkedCard({href, title, date}) {
     <Link href={href}>
       <a css={card}>
         <h3 css={cardTitle}>{title}</h3>
-        <Date css={cardDate} dateString={date} />
+        <span css={cardDate}>
+          <Date dateString={date} />
+        </span>
       </a>
     </Link>
   )

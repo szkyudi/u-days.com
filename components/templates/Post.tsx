@@ -96,7 +96,9 @@ export default function Post({ postData }) {
         <section css={section}>
           <header css={postHeader}>
             <h1 css={postTitle}>{postData.title}</h1>
-            <Date css={postDate} dateString={postData.publishedAt} />
+            <span css={postDate}>
+              <Date dateString={postData.publishedAt} />
+            </span>
             <div css={postTags}>
               {postData.tags ? postData.tags.map(tag => (
                 <Tag key={tag.slug} slug={tag.slug}>{tag.name}</Tag>
