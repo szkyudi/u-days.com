@@ -1,7 +1,8 @@
+import { GetServerSideProps } from 'next'
 import SearchTemplate from '../components/templates/Search'
 import { getSortedPostsData } from '../lib/posts'
 
-export async function getServerSideProps({query}) {
+export const getServerSideProps: GetServerSideProps = async ({query}) => {
   const allPostsData = await getSortedPostsData(query.keyword)
   return {
     props: {

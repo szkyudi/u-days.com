@@ -1,9 +1,10 @@
+import { GetStaticProps, GetStaticPaths } from 'next'
 import { getTaggedPostsData } from '../../lib/posts'
 import { getAllTagsIds, getTagData } from '../../lib/tags'
 import TaggedPosts from '../../components/templates/TaggedPosts'
 
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getAllTagsIds()
   return {
     paths,
@@ -11,7 +12,7 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }) {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const tagData = await getTagData(params.slug)
   const taggedPostsData = await getTaggedPostsData(tagData.id)
   return {
