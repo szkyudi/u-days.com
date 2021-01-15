@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -19,6 +18,7 @@ export default function HeaderLogo() {
           <Image
             src="/logo.svg"
             layout="fill"
+            alt="u-daysのロゴ"
           />
         </a>
       </Link>

@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import Link from 'next/link'
 import variables from '../../lib/styles/variables'
@@ -14,6 +13,7 @@ const tag = css`
   &:hover {
     cursor: pointer;
     box-shadow: ${variables.shadow.dp1};
+    transform: translateY(-1px);
   }
 `
 
