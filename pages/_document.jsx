@@ -8,11 +8,12 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="ja">
         <Head>
           <link rel="icon" href="/favicon.ico" />
           <link rel="shortcut icon" href="/favicon.ico" />
           <link rel="apple-touch-icon" href="/favicon.ico" />
+          <meta name="description" content="とあるWEBエンジニアの技術ブログです。主にWEBフロントエンド技術に関する記事を公開しています。" />
         </Head>
         <body>
           <Main />

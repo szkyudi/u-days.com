@@ -4,6 +4,10 @@ import { useState, useEffect, useRef } from 'react'
 import Router from 'next/router'
 import variables from '../../lib/styles/variables'
 
+const label = css`
+  display: block;
+`
+
 const input = css`
   display: block;
   width: 100%;
@@ -54,15 +58,17 @@ export default function SearchBar(props) {
   
   return (
     <form onSubmit={getSearchPage}>
-      <input
-        className={props.className}
-        ref={inputElement}
-        css={input}
-        type="text"
-        value={inputValue}
-        onChange={changeSearchInput}
-        placeholder="検索キーワード"
-      />
+      <label css={label}>
+        <input
+          className={props.className}
+          ref={inputElement}
+          css={input}
+          type="text"
+          value={inputValue}
+          onChange={changeSearchInput}
+          placeholder="検索キーワード"
+        />
+      </label>
     </form>
   )
 }

@@ -18,6 +18,7 @@ export default function HeaderLogo() {
           <Image
             src="/logo.svg"
             layout="fill"
+            alt="u-daysのロゴ"
           />
         </a>
       </Link>
