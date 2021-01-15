@@ -1,7 +1,8 @@
+import { GetStaticProps } from 'next'
 import PageTemplate from '../components/templates/Page'
 import { getPageData } from '../lib/pages'
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const pageData = await getPageData('6ZYt6HImFR5SaZrX7ZO080')
   return {
     props: {

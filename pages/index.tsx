@@ -1,7 +1,8 @@
+import { GetStaticProps } from 'next'
 import HomeTemplate from '../components/templates/Home'
 import { getSortedPostsData } from '../lib/posts'
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const allPostsData = await getSortedPostsData()
   return {
     props: {
