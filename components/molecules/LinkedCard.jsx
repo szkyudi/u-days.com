@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import Link from 'next/link'
 import variables from '../../lib/styles/variables'
@@ -28,8 +27,10 @@ const cardTitle = css`
 `
 
 const cardDate = css`
+  display: block;
+  margin-top: ${variables.space.sm};
   font-size: 12px;
-  margin-top: 12px;
+  color: ${variables.color.textSub};
 `
 
 export default function LinkedCard({href, title, date}) {

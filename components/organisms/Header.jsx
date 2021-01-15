@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import React, { setGlobal, useGlobal } from 'reactn'
 import utils from '../../lib/styles/utils'
