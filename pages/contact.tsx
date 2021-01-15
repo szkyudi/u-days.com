@@ -11,6 +11,11 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-export default function Page({ pageData }) {
+export default function Page({ pageData }: {
+  pageData: {
+    title: string
+    contentHtml: string
+  }
+}) {
   return <PageTemplate pageData={pageData} />
 }

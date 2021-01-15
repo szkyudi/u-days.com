@@ -11,6 +11,12 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-export default function Home({ allPostsData }) {
+export default function Home({ allPostsData }: {
+  allPostsData: {
+    publishedAt: string
+    title: string
+    id: string
+  }[]
+}) {
   return <HomeTemplate allPostsData={allPostsData} />
 }
