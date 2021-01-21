@@ -7,30 +7,32 @@ import variables from '../../lib/styles/variables'
 import utils from '../../lib/styles/utils'
 
 const title = css`
-  margin: ${variables.space.lg} 0 ${variables.space.md};
+  margin-top: ${variables.space.lg};
+  margin-bottom: ${variables.space.md};
   font-size: 24px;
   font-weight: bold;
   color: ${variables.color.onBackground};
 `
+
 const main = css`
   ${utils.contianer}
 `
 
-export default function Search({ allPostsData, keyword }) {
-  const havePosts = Object.keys(allPostsData).length > 0 ? true : false;
+export default function TaggedPosts({ tag, posts }: {
+  tag: Tag
+  posts: Post[]
+}) {
   return (
     <>
       <Head>
-        <title>u-days｜とあるWebエンジニアのつぶやき</title>
+        <title>"{tag.name}"のタグが付いた記事｜u-days</title>
       </Head>
       <Header />
       <main css={main}>
-        <h2 css={title}>"{ keyword }"の検索結果</h2>
-        {allPostsData.map(({ id, publishedAt, title }) => (
+        <h2 css={title}>"{tag.name}"のタグが付いた記事</h2>
+        {posts.map(({ id, title, publishedAt }) => (
           <LinkedCard key={id} href={`/posts/${id}`} title={title} date={publishedAt} />
-        ))
-        }
-        {havePosts || <p>検索結果に該当する記事が見つかりませんでした。</p>}
+        ))}
       </main>
       <Footer />
     </>

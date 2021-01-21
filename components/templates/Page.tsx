@@ -1,11 +1,9 @@
 import { css } from '@emotion/react'
 import Head from 'next/head'
-import Header from '../organisms/Header'
-import Footer from '../organisms/Footer'
-import Date from '../atoms/Date'
-import Tag from '../atoms/Tag'
 import variables from '../../lib/styles/variables'
 import utils from '../../lib/styles/utils'
+import Header from '../../components/organisms/Header'
+import Footer from '../../components/organisms/Footer'
 
 const section = css`
   ${utils.contianer}
@@ -21,21 +19,6 @@ const postTitle = css`
   font-size: 24px;
   font-weight: bold;
   line-height: 1.4;
-`
-
-const postTags = css`
-  margin-top: 16px;
-`
-
-const postImg = css`
-  display: block;
-  width: 100%;
-  margin-top: 16px;
-`
-
-const postDate = css`
-  font-size: 14px;
-  margin-top: 16px;
 `
 
 const postContent = css`
@@ -85,28 +68,19 @@ const postContent = css`
   }
 `
 
-export default function Post({ postData }) {
+export default function Page({ page }: { page: Page }) {
   return (
     <>
       <Head>
-        <title>{postData.title}｜u-days</title>
+        <title>{page.title}｜u-days</title>
       </Head>
       <Header />
-      <main>
-        <section css={section}>
-          <header css={postHeader}>
-            <h1 css={postTitle}>{postData.title}</h1>
-            <Date css={postDate} dateString={postData.publishedAt} />
-            <div css={postTags}>
-              {postData.tags ? postData.tags.map(tag => (
-                <Tag key={tag.slug} slug={tag.slug}>{tag.name}</Tag>
-              )) : ''}
-            </div>
-            {postData.thumbnail ? <img css={postImg} src={postData.thumbnail.url} alt={postData.thumbnail.alt} /> : ''}
-          </header>
-          <div css={postContent} dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-        </section>
-      </main>
+      <section css={section}>
+        <header css={postHeader}>
+          <h1 css={postTitle}>{page.title}</h1>
+        </header>
+        <div css={postContent} dangerouslySetInnerHTML={{ __html: page.contentHtml }} />
+      </section>
       <Footer />
     </>
   )

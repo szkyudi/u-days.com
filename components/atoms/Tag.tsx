@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import { css } from '@emotion/react'
 import Link from 'next/link'
 import variables from '../../lib/styles/variables'
@@ -17,10 +18,13 @@ const tag = css`
   }
 `
 
-export default function Tag({children, className, slug}) {
+export default function Tag({children, slug}: {
+  children: ReactNode
+  slug: string
+}) {
   return (
     <Link href={`/tags/${slug}`}>
-      <span className={className} css={tag}>#{children}</span>
+      <span css={tag}>#{children}</span>
     </Link>
   )
 }
