@@ -13,10 +13,10 @@ const input = css`
   width: 100%;
   padding: .5em;
   border: 1px solid ${variables.color.primaryVariant};
-  border-radius: 2px;
   font-size: 16px;
   color: ${variables.color.onPrimary};
   background: ${variables.color.background};
+  ${variables.rounded}
 `
 
 export default function SearchBar(props) {
