@@ -58,7 +58,7 @@ export default function SearchBar(props) {
   
   return (
     <form onSubmit={getSearchPage}>
-      <label css={label}>
+      <label css={label} htmlFor="searchBar">
         <input
           className={props.className}
           ref={inputElement}
@@ -67,6 +67,7 @@ export default function SearchBar(props) {
           value={inputValue}
           onChange={changeSearchInput}
           placeholder="検索キーワード"
+          id="searchBar"
         />
       </label>
     </form>
