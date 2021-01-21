@@ -8,7 +8,7 @@ const variables = {
     surface: '#fff',
     onSurface: '#333',
     textMain: '#333',
-    textSub: '#888',
+    textSub: '#777',
     textMuted: '#bbb'
   },
   space: {
