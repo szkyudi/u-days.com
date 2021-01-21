@@ -24,7 +24,7 @@ export default function Tag({children, slug}: {
 }) {
   return (
     <Link href={`/tags/${slug}`}>
-      <span css={tag}>#{children}</span>
+      <span css={tag}>{children}</span>
     </Link>
   )
 }
