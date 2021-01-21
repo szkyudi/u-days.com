@@ -3,19 +3,14 @@ import PageTemplate from '../components/templates/Page'
 import { getPageData } from '../lib/pages'
 
 export const getStaticProps: GetStaticProps = async () => {
-  const pageData = await getPageData('6ZYt6HImFR5SaZrX7ZO080')
+  const page = await getPageData('6ZYt6HImFR5SaZrX7ZO080')
   return {
     props: {
-      pageData
+      page
     }
   }
 }
 
-export default function Page({ pageData }: {
-  pageData: {
-    title: string
-    contentHtml: string
-  }
-}) {
-  return <PageTemplate pageData={pageData} />
+export default function Page({ page }: { page: Page }) {
+  return <PageTemplate page={page} />
 }

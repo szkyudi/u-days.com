@@ -18,16 +18,19 @@ const main = css`
   ${utils.contianer}
 `
 
-export default function Home({ tagData, taggedPostsData }) {
+export default function TaggedPosts({ tag, posts }: {
+  tag: Tag
+  posts: Post[]
+}) {
   return (
     <>
       <Head>
-        <title>"{tagData.name}"のタグが付いた記事｜u-days</title>
+        <title>"{tag.name}"のタグが付いた記事｜u-days</title>
       </Head>
       <Header />
       <main css={main}>
-        <h2 css={title}>"{tagData.name}"のタグが付いた記事</h2>
-        {taggedPostsData.map(({ id, title, publishedAt }) => (
+        <h2 css={title}>"{tag.name}"のタグが付いた記事</h2>
+        {posts.map(({ id, title, publishedAt }) => (
           <LinkedCard key={id} href={`/posts/${id}`} title={title} date={publishedAt} />
         ))}
       </main>

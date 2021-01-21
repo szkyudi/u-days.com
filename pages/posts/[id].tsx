@@ -15,29 +15,14 @@ export const getStaticProps: GetStaticProps = async ({ params }: {
     id: string
   }
 }) => {
-  const postData = await getPostData(params.id)
+  const post = await getPostData(params.id)
   return {
     props: {
-      postData
+      post
     }
   }
 }
 
-export default function Post({ postData }: {
-  postData: {
-    id: string
-    title: string
-    contentHtml: string
-    publishedAt: string
-    thumbnail: {
-      url: string
-      alt: string
-    }
-    tags: {
-      slug: string
-      name: string
-    }[]
-  }
-}) {
-  return <PostTemplate postData={postData} />
+export default function Post({ post }: { post: Post }) {
+  return <PostTemplate post={post} />
 }

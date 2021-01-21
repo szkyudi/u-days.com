@@ -85,28 +85,28 @@ const postContent = css`
   }
 `
 
-export default function Post({ postData }) {
+export default function Post({ post }: { post: Post }) {
   return (
     <>
       <Head>
-        <title>{postData.title}｜u-days</title>
+        <title>{post.title}｜u-days</title>
       </Head>
       <Header />
       <main>
         <section css={section}>
           <header css={postHeader}>
-            <h1 css={postTitle}>{postData.title}</h1>
+            <h1 css={postTitle}>{post.title}</h1>
             <span css={postDate}>
-              <Date dateString={postData.publishedAt} />
+              <Date dateString={post.publishedAt} />
             </span>
             <div css={postTags}>
-              {postData.tags ? postData.tags.map(tag => (
+              {post.tags ? post.tags.map((tag: Tag) => (
                 <Tag key={tag.slug} slug={tag.slug}>{tag.name}</Tag>
               )) : ''}
             </div>
-            {postData.thumbnail ? <img css={postImg} src={postData.thumbnail.url} alt={postData.thumbnail.alt} /> : ''}
+            {post.thumbnail ? <img css={postImg} src={post.thumbnail.url} alt={post.thumbnail.alt} /> : ''}
           </header>
-          <div css={postContent} dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+          <div css={postContent} dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
         </section>
       </main>
       <Footer />

@@ -68,18 +68,18 @@ const postContent = css`
   }
 `
 
-export default function Page({ pageData }) {
+export default function Page({ page }: { page: Page }) {
   return (
     <>
       <Head>
-        <title>{pageData.title}｜u-days</title>
+        <title>{page.title}｜u-days</title>
       </Head>
       <Header />
       <section css={section}>
         <header css={postHeader}>
-          <h1 css={postTitle}>{pageData.title}</h1>
+          <h1 css={postTitle}>{page.title}</h1>
         </header>
-        <div css={postContent} dangerouslySetInnerHTML={{ __html: pageData.contentHtml }} />
+        <div css={postContent} dangerouslySetInnerHTML={{ __html: page.contentHtml }} />
       </section>
       <Footer />
     </>

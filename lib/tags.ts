@@ -1,21 +1,5 @@
 const contentful =  require('contentful')
 
-interface TagEntry {
-  sys: {
-    id: string
-  }
-  fields: {
-    name: string
-    slug: string
-  }
-}
-
-interface Tag {
-  id: string
-  name: string
-  slug: string
-}
-
 const client = contentful.createClient({
   space: 'qldauggibp1f',
   accessToken: 'Ncaig05I3g2XVfMOw5Aw1dP5LgKPCwRNQOskyGKIFdU'
