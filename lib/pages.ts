@@ -2,22 +2,6 @@ const contentful = require('contentful')
 import remark from 'remark'
 import html from 'remark-html'
 
-interface PageEntity {
-  sys: {
-    id: string
-  }
-  fields: {
-    body: string
-    title: string
-  }
-}
-
-interface Page {
-  id: string
-  title: string
-  contentHtml: string
-}
-
 const client = contentful.createClient({
   space: 'qldauggibp1f',
   accessToken: 'Ncaig05I3g2XVfMOw5Aw1dP5LgKPCwRNQOskyGKIFdU'

@@ -17,25 +17,19 @@ export const getStaticProps: GetStaticProps = async ({ params }: {
     slug: string
   }
 }) => {
-  const tagData = await getTagData(params.slug)
-  const taggedPostsData = await getTaggedPostsData(tagData.id)
+  const tag = await getTagData(params.slug)
+  const posts = await getTaggedPostsData(tag.id)
   return {
     props: {
-      tagData,
-      taggedPostsData
+      tag,
+      posts
     }
   }
 }
 
-export default function Home({ tagData, taggedPostsData }: {
-  tagData: {
-    name: string
-  }
-  taggedPostsData: {
-    id: string
-    title: string
-    publishedAt: string
-  }[]
+export default function Home({ tag, posts }: {
+  tag: Tag
+  posts: Post[]
 }) {
-  return <TaggedPosts tagData={tagData} taggedPostsData={taggedPostsData} />
+  return <TaggedPosts tag={tag} posts={posts} />
 }

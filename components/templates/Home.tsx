@@ -16,7 +16,7 @@ const main = css`
   ${utils.contianer}
 `
 
-export default function Home({ allPostsData }) {
+export default function Home({ posts }: { posts: Post[]}) {
   return (
     <>
       <Head>
@@ -25,7 +25,7 @@ export default function Home({ allPostsData }) {
       <Header />
       <main css={main}>
         <h2 css={title}>新着記事一覧</h2>
-        {allPostsData.map(({ id, publishedAt, title }) => (
+        {posts.map(({ id, publishedAt, title }) => (
           <LinkedCard key={id} href={`/posts/${id}`} title={title} date={publishedAt} />
         ))}
       </main>

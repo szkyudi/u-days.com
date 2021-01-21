@@ -3,20 +3,14 @@ import HomeTemplate from '../components/templates/Home'
 import { getSortedPostsData } from '../lib/posts'
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = await getSortedPostsData()
+  const posts = await getSortedPostsData()
   return {
     props: {
-      allPostsData
+      posts
     }
   }
 }
 
-export default function Home({ allPostsData }: {
-  allPostsData: {
-    publishedAt: string
-    title: string
-    id: string
-  }[]
-}) {
-  return <HomeTemplate allPostsData={allPostsData} />
+export default function Home({ posts }: { posts: Post[] }) {
+  return <HomeTemplate posts={posts} />
 }

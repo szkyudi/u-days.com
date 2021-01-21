@@ -2,61 +2,6 @@ const contentful = require('contentful')
 import remark from 'remark'
 import html from 'remark-html'
 
-interface ThumbnailEntry {
-  sys: {
-    id: string
-  }
-  fields: {
-    title: string
-    file: {
-      url: string
-    }
-  }
-}
-
-interface TagEntry {
-  sys: {
-    id: string
-  }
-  fields: {
-    name: string
-    slug: string
-  }
-}
-
-interface PostEntry {
-  sys: {
-    id: string
-  }
-  fields: {
-    title: string
-    publishedAt: string
-    body: string
-    thumbnail?: ThumbnailEntry
-    tags?: TagEntry[]
-  }
-}
-
-interface Post {
-  id: string
-  title: string
-  publishedAt: string
-  body?: string
-  thumbnail?: ThumbnailEntry
-  tags?: TagEntry[]
-}
-
-interface Tag {
-  id: string
-  name: string
-  slug: string
-}
-
-interface Thumbnail {
-  url: string
-  alt: string
-}
-
 const client = contentful.createClient({
   space: 'qldauggibp1f',
   accessToken: 'Ncaig05I3g2XVfMOw5Aw1dP5LgKPCwRNQOskyGKIFdU'
@@ -71,7 +16,6 @@ export async function getSortedPostsData(keyword:string = '') {
     return {
       id: post.sys.id,
       title: post.fields.title,
-      thumbnail: post.fields.thumbnail || null,
       publishedAt: post.fields.publishedAt,
     }
   })
@@ -93,7 +37,6 @@ export async function getTaggedPostsData(tagId: string) {
     return {
       id: post.sys.id,
       title: post.fields.title,
-      thumbnail: post.fields.thumbnail || null,
       publishedAt: post.fields.publishedAt,
     }
   })

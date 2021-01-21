@@ -3,22 +3,18 @@ import SearchTemplate from '../components/templates/Search'
 import { getSortedPostsData } from '../lib/posts'
 
 export const getServerSideProps: GetServerSideProps = async ({query}: {query: any}) => {
-  const allPostsData = await getSortedPostsData(query.keyword)
+  const posts = await getSortedPostsData(query.keyword)
   return {
     props: {
-      allPostsData,
+      posts,
       keyword: query.keyword
     }
   }
 }
 
-export default function Search({ allPostsData, keyword } : {
-  allPostsData: {
-    title: string
-    publishedAt: string
-    id: string
-  }
+export default function Search({ posts, keyword }: {
+  posts:Post[]
   keyword: string
 }) {
-  return <SearchTemplate allPostsData={allPostsData} keyword={keyword} />
+  return <SearchTemplate posts={posts} keyword={keyword} />
 }
