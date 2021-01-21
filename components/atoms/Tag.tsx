@@ -9,7 +9,7 @@ const tag = css`
   padding: .5em 1em;
   color: ${variables.color.onPrimary};
   background: ${variables.color.primary};
-  margin-right: 4px;
+  margin-right: ${variables.space.xs};
   transition: .2s;
   &:hover {
     cursor: pointer;
@@ -24,7 +24,7 @@ export default function Tag({children, slug}: {
 }) {
   return (
     <Link href={`/tags/${slug}`}>
-      <span css={tag}>#{children}</span>
+      <span css={tag}>{children}</span>
     </Link>
   )
 }

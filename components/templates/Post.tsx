@@ -9,12 +9,17 @@ import utils from '../../lib/styles/utils'
 
 const section = css`
   ${utils.contianer}
+  margin-top: ${variables.space.lg};
+  margin-bottom: ${variables.space.xl};
   color: ${variables.color.onBackground};
+  @media (min-width: ${variables.breakpoints.lg}px) {
+    margin-top: ${variables.space.xl};
+    margin-bottom: ${variables.space.xxl};
+  }
 `
 
 const postHeader = css`
-  margin-top: 24px;
-  margin-bottom: 48px;
+  margin-bottom: ${variables.space.sm};
 `
 
 const postTitle = css`
@@ -24,37 +29,38 @@ const postTitle = css`
 `
 
 const postTags = css`
-  margin-top: 16px;
+  margin-top: ${variables.space.md};
 `
 
 const postImg = css`
   display: block;
   width: 100%;
-  margin-top: 16px;
+  margin-top: ${variables.space.md};
 `
 
 const postDate = css`
   font-size: 14px;
-  margin-top: 16px;
+  margin-top: ${variables.space.md};
 `
 
 const postContent = css`
   line-height: 1.8;
   h2, h3, h4, h5, h6 {
-    margin: 2em 0 8px;
+    margin: 1.8em 0 .6em;
     font-weight: bold;
   }
   h2 {
-    font-size: 20px;
+    font-size: 24px;
+    border-bottom: 1px solid ${variables.color.textMuted};
   }
   h3 {
-    font-size: 18px;
+    font-size: 20px;
   }
   h4 {
     font-size: 16px;
   }
   p + p {
-    margin-top: 1em;
+    margin-top: .6em;
   }
   a {
     color: ${variables.color.primaryVariant};
@@ -63,7 +69,8 @@ const postContent = css`
     }
   }
   ul, ol {
-    padding: 1em 0 1em 1.5em;
+    margin: 1em 0;
+    padding: 0 0 0 1.5em;
   }
   ul {
     list-style: disc;

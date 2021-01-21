@@ -5,7 +5,7 @@ import Date from '../atoms/Date'
 
 const card = css`
   display: block;
-  padding: 16px;
+  padding: ${variables.space.md};
   background: ${variables.color.surface};
   box-shadow: ${variables.shadow.dp1};
   transition: .2s;

@@ -8,7 +8,7 @@ const variables = {
     surface: '#fff',
     onSurface: '#333',
     textMain: '#333',
-    textSub: '#888',
+    textSub: '#777',
     textMuted: '#bbb'
   },
   space: {
@@ -17,6 +17,7 @@ const variables = {
     md: '16px',
     lg: '32px',
     xl: '48px',
+    xxl: '64px'
   },
   shadow: {
     dp1: '0 1px 1px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.18)',
