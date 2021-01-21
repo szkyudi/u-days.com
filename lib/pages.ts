@@ -2,14 +2,29 @@ const contentful = require('contentful')
 import remark from 'remark'
 import html from 'remark-html'
 
+interface PageEntity {
+  sys: {
+    id: string
+  }
+  fields: {
+    body: string
+    title: string
+  }
+}
+
+interface Page {
+  id: string
+  title: string
+  contentHtml: string
+}
 
 const client = contentful.createClient({
   space: 'qldauggibp1f',
   accessToken: 'Ncaig05I3g2XVfMOw5Aw1dP5LgKPCwRNQOskyGKIFdU'
 })
 
-export async function getPageData(id) {
-  const page = await client.getEntry(id)
+export async function getPageData(id: string): Promise<Page> {
+  const page: PageEntity = await client.getEntry(id)
   const processedContent = await remark()
     .use(html)
     .process(page.fields.body)

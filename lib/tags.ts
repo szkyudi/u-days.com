@@ -1,5 +1,20 @@
-const contentful = require('contentful')
+const contentful =  require('contentful')
 
+interface TagEntry {
+  sys: {
+    id: string
+  }
+  fields: {
+    name: string
+    slug: string
+  }
+}
+
+interface Tag {
+  id: string
+  name: string
+  slug: string
+}
 
 const client = contentful.createClient({
   space: 'qldauggibp1f',
@@ -7,8 +22,8 @@ const client = contentful.createClient({
 })
 
 export async function getAllTagsIds() {
-  const entries = await client.getEntries({content_type: 'tags'})
-  return entries.items.map(tag => {
+  const entries: any = await client.getEntries({content_type: 'tags'})
+  return entries.items.map((tag: TagEntry) => {
     return {
       params: {
         slug: tag.fields.slug,
@@ -17,14 +32,14 @@ export async function getAllTagsIds() {
   })
 }
 
-export async function getTagData(slug) {
-  const tags = await client.getEntries({
+export async function getTagData(slug: string): Promise<Tag> {
+  const tags: any = await client.getEntries({
     content_type: 'tags',
     'fields.slug': slug,
     limit: 1
   })
 
-  const tag = tags.items[0]
+  const tag: TagEntry = tags.items[0]
 
   return {
     id: tag.sys.id,
