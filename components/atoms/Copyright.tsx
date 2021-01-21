@@ -10,5 +10,5 @@ const copyright = css`
 `
 
 export default function Copyright() {
-  return <small css={copyright}>&copy; 2020 udays.work</small>
+  return <small css={copyright}>&copy; 2020 u-days.com</small>
 }
