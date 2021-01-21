@@ -5,15 +5,21 @@ import Footer from '../organisms/Footer'
 import LinkedCard from '../molecules/LinkedCard'
 import variables from '../../lib/styles/variables'
 import utils from '../../lib/styles/utils'
+const main = css`
+  ${utils.contianer}
+  margin-top: ${variables.space.lg};
+  margin-bottom: ${variables.space.xl};
+  @media (min-width: ${variables.breakpoints.lg}px) {
+    margin-top: ${variables.space.xl};
+    margin-bottom: ${variables.space.xxl};
+  }
+`
 
 const title = css`
-  margin: ${variables.space.lg} 0 ${variables.space.md};
+  margin-bottom: ${variables.space.md};
   font-size: 24px;
   font-weight: bold;
   color: ${variables.color.onBackground};
-`
-const main = css`
-  ${utils.contianer}
 `
 
 export default function Home({ posts }: { posts: Post[]}) {

@@ -9,9 +9,13 @@ import utils from '../../lib/styles/utils'
 
 const section = css`
   ${utils.contianer}
+  margin-top: ${variables.space.lg};
+  margin-bottom: ${variables.space.xl};
   color: ${variables.color.onBackground};
-  padding-top: ${variables.space.lg};
-  padding-bottom: ${variables.space.xl};
+  @media (min-width: ${variables.breakpoints.lg}px) {
+    margin-top: ${variables.space.xl};
+    margin-bottom: ${variables.space.xxl};
+  }
 `
 
 const postHeader = css`
