@@ -7,12 +7,17 @@ import Footer from '../../components/organisms/Footer'
 
 const section = css`
   ${utils.contianer}
+  margin-top: ${variables.space.lg};
+  margin-bottom: ${variables.space.xl};
   color: ${variables.color.onBackground};
+  @media (min-width: ${variables.breakpoints.lg}px) {
+    margin-top: ${variables.space.xl};
+    margin-bottom: ${variables.space.xxl};
+  }
 `
 
 const postHeader = css`
-  margin-top: 24px;
-  margin-bottom: 48px;
+  margin-bottom: ${variables.space.md};
 `
 
 const postTitle = css`
