@@ -1,9 +1,11 @@
 import { css } from '@emotion/react'
 import Head from 'next/head'
+import Header from '../organisms/Header'
+import Footer from '../organisms/Footer'
+import Date from '../atoms/Date'
+import Tag from '../atoms/Tag'
 import variables from '../../lib/styles/variables'
 import utils from '../../lib/styles/utils'
-import Header from '../../components/organisms/Header'
-import Footer from '../../components/organisms/Footer'
 
 const section = css`
   ${utils.contianer}
@@ -19,6 +21,21 @@ const postTitle = css`
   font-size: 24px;
   font-weight: bold;
   line-height: 1.4;
+`
+
+const postTags = css`
+  margin-top: 16px;
+`
+
+const postImg = css`
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+`
+
+const postDate = css`
+  font-size: 14px;
+  margin-top: 16px;
 `
 
 const postContent = css`
@@ -68,19 +85,30 @@ const postContent = css`
   }
 `
 
-export default function Page({ pageData }) {
+export default function Post({ post }: { post: Post }) {
   return (
     <>
       <Head>
-        <title>{pageData.title}｜u-days</title>
+        <title>{post.title}｜u-days</title>
       </Head>
       <Header />
-      <section css={section}>
-        <header css={postHeader}>
-          <h1 css={postTitle}>{pageData.title}</h1>
-        </header>
-        <div css={postContent} dangerouslySetInnerHTML={{ __html: pageData.contentHtml }} />
-      </section>
+      <main>
+        <section css={section}>
+          <header css={postHeader}>
+            <h1 css={postTitle}>{post.title}</h1>
+            <span css={postDate}>
+              <Date dateString={post.publishedAt} />
+            </span>
+            <div css={postTags}>
+              {post.tags ? post.tags.map((tag: Tag) => (
+                <Tag key={tag.slug} slug={tag.slug}>{tag.name}</Tag>
+              )) : ''}
+            </div>
+            {post.thumbnail ? <img css={postImg} src={post.thumbnail.url} alt={post.thumbnail.alt} /> : ''}
+          </header>
+          <div css={postContent} dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+        </section>
+      </main>
       <Footer />
     </>
   )

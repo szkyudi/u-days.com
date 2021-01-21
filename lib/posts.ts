@@ -2,27 +2,24 @@ const contentful = require('contentful')
 import remark from 'remark'
 import html from 'remark-html'
 
-
 const client = contentful.createClient({
   space: 'qldauggibp1f',
   accessToken: 'Ncaig05I3g2XVfMOw5Aw1dP5LgKPCwRNQOskyGKIFdU'
 })
 
-export async function getSortedPostsData(keyword = null) {
-
-  let posts = await client.getEntries({
+export async function getSortedPostsData(keyword:string = '') {
+  const postEntries: any = await client.getEntries({
     content_type: 'posts',
     query: keyword
   })
-  posts = posts.items.map(post => {
+  const posts = postEntries.items.map((post: PostEntry): Post => {
     return {
       id: post.sys.id,
       title: post.fields.title,
-      thumbnail: post.fields.thumbnail | null,
       publishedAt: post.fields.publishedAt,
     }
   })
-  return posts.sort((a, b) => {
+  return posts.sort((a: Post, b: Post) => {
     if (a.publishedAt < b.publishedAt) {
       return 1
     } else {
@@ -31,20 +28,19 @@ export async function getSortedPostsData(keyword = null) {
   })
 }
 
-export async function getTaggedPostsData(tagId) {
-  let posts = await client.getEntries({
+export async function getTaggedPostsData(tagId: string) {
+  const postEntries: any = await client.getEntries({
     content_type: 'posts',
     'fields.tags.sys.id': tagId
   })
-  posts = posts.items.map(post => {
+  const posts = postEntries.items.map((post: PostEntry): Post => {
     return {
       id: post.sys.id,
       title: post.fields.title,
-      thumbnail: post.fields.thumbnail || null,
       publishedAt: post.fields.publishedAt,
     }
   })
-  return posts.sort((a, b) => {
+  return posts.sort((a: Post, b: Post) => {
     if (a.publishedAt < b.publishedAt) {
       return 1
     } else {
@@ -54,8 +50,8 @@ export async function getTaggedPostsData(tagId) {
 }
 
 export async function getAllPostsIds() {
-  const posts = await client.getEntries({content_type: 'posts'})
-  return posts.items.map(post => {
+  const posts: any = await client.getEntries({content_type: 'posts'})
+  return posts.items.map((post: PostEntry) => {
     return {
       params: {
         id: post.sys.id
@@ -64,19 +60,19 @@ export async function getAllPostsIds() {
   })
 }
 
-export async function getPostData(id) {
-  const post = await client.getEntry(id)
+export async function getPostData(id: string) {
+  const post: PostEntry = await client.getEntry(id)
   const processedContent = await remark()
     .use(html)
     .process(post.fields.body)
   const contentHtml = processedContent.toString()
 
-  const thumbnail = post.fields.thumbnail ? {
+  const thumbnail: Thumbnail = post.fields.thumbnail ? {
     alt: post.fields.thumbnail.fields.title,
     url: post.fields.thumbnail.fields.file.url
   } : null
 
-  const tags = post.fields.tags ? post.fields.tags.map(tag => {
+  const tags = post.fields.tags ? post.fields.tags.map((tag: TagEntry): Tag => {
     return {
       id: tag.sys.id,
       slug: tag.fields.slug,

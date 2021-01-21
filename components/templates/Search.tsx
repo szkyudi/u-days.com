@@ -16,7 +16,11 @@ const main = css`
   ${utils.contianer}
 `
 
-export default function Home({ allPostsData }) {
+export default function Search({ posts, keyword }: {
+  posts: Post[]
+  keyword: string
+}) {
+  const havePosts = Object.keys(posts).length > 0 ? true : false;
   return (
     <>
       <Head>
@@ -24,10 +28,12 @@ export default function Home({ allPostsData }) {
       </Head>
       <Header />
       <main css={main}>
-        <h2 css={title}>新着記事一覧</h2>
-        {allPostsData.map(({ id, publishedAt, title }) => (
+        <h2 css={title}>"{ keyword }"の検索結果</h2>
+        {posts.map(({ id, publishedAt, title }) => (
           <LinkedCard key={id} href={`/posts/${id}`} title={title} date={publishedAt} />
-        ))}
+        ))
+        }
+        {havePosts || <p>検索結果に該当する記事が見つかりませんでした。</p>}
       </main>
       <Footer />
     </>
