@@ -13,10 +13,10 @@ const input = css`
   width: 100%;
   padding: .5em;
   border: 1px solid ${variables.color.primaryVariant};
-  border-radius: 2px;
   font-size: 16px;
   color: ${variables.color.onPrimary};
   background: ${variables.color.background};
+  ${variables.rounded}
 `
 
 export default function SearchBar(props) {
@@ -58,7 +58,7 @@ export default function SearchBar(props) {
   
   return (
     <form onSubmit={getSearchPage}>
-      <label css={label}>
+      <label css={label} htmlFor="searchBar">
         <input
           className={props.className}
           ref={inputElement}
@@ -67,6 +67,7 @@ export default function SearchBar(props) {
           value={inputValue}
           onChange={changeSearchInput}
           placeholder="検索キーワード"
+          id="searchBar"
         />
       </label>
     </form>

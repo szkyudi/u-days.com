@@ -6,6 +6,17 @@ import LinkedCard from '../molecules/LinkedCard'
 import variables from '../../lib/styles/variables'
 import utils from '../../lib/styles/utils'
 
+const main = css`
+  ${utils.contianer}
+  margin-top: ${variables.space.lg};
+  margin-bottom: ${variables.space.xl};
+  color: ${variables.color.onBackground};
+  @media (min-width: ${variables.breakpoints.lg}px) {
+    margin-top: ${variables.space.xl};
+    margin-bottom: ${variables.space.xxl};
+  }
+`
+
 const title = css`
   margin-top: ${variables.space.lg};
   margin-bottom: ${variables.space.md};
@@ -14,9 +25,6 @@ const title = css`
   color: ${variables.color.onBackground};
 `
 
-const main = css`
-  ${utils.contianer}
-`
 
 export default function TaggedPosts({ tag, posts }: {
   tag: Tag
