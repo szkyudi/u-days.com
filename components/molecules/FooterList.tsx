@@ -35,6 +35,11 @@ export default function FooterList() {
           <a css={listLink}>お問い合わせ</a>
         </Link>
       </li>
+      <li css={listItem}>
+        <Link href="/privacy">
+          <a css={listLink}>プライバシーポリシー</a>
+        </Link>
+      </li>
     </ul>
   )
 }
