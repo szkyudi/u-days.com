@@ -3,6 +3,7 @@ import { useGlobal } from 'reactn'
 import { useState, useEffect, useRef } from 'react'
 import Router from 'next/router'
 import variables from '../../lib/styles/variables'
+import * as gtag from '../../lib/gtag'
 
 const label = css`
   display: block;
@@ -32,6 +33,11 @@ export default function SearchBar(props) {
       Router.push('/')
       return
     }
+    gtag.event({
+      action: 'searchBar_submit',
+      category: 'search',
+      label: inputValue,
+    })
     Router.push({
       pathname: '/search',
       query: { keyword: inputValue }
