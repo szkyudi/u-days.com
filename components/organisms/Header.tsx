@@ -20,7 +20,8 @@ const container = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: ${variables.space.md};
+  padding-top: ${variables.space.md};
+  padding-bottom: ${variables.space.md};
 `;
 
 const aside = css`
