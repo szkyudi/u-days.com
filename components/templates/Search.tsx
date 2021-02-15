@@ -1,5 +1,6 @@
 import { css } from '@emotion/react'
 import Head from 'next/head'
+import config from '../../lib/config'
 import Header from '../organisms/Header'
 import Footer from '../organisms/Footer'
 import LinkedCard from '../molecules/LinkedCard'
@@ -8,17 +9,17 @@ import utils from '../../lib/styles/utils'
 
 const main = css`
   ${utils.contianer}
-  margin-top: ${variables.space.lg};
-  margin-bottom: ${variables.space.xl};
+  margin-top: ${variables.space.md};
+  margin-bottom: ${variables.space.md};
   color: ${variables.color.onBackground};
   @media (min-width: ${variables.breakpoints.lg}px) {
-    margin-top: ${variables.space.xl};
-    margin-bottom: ${variables.space.xxl};
+    margin-top: ${variables.space.lg};
+    margin-bottom: ${variables.space.lg};
   }
 `
 
 const title = css`
-  margin: ${variables.space.lg} 0 ${variables.space.md};
+  margin-bottom: ${variables.space.md};
   font-size: 24px;
   font-weight: bold;
   color: ${variables.color.onBackground};
@@ -32,7 +33,7 @@ export default function Search({ posts, keyword }: {
   return (
     <>
       <Head>
-        <title>u-days｜とあるWebエンジニアのつぶやき</title>
+        <title>"{keyword}"の検索結果{config.titleSeperator}{config.title}</title>
       </Head>
       <Header />
       <main css={main}>

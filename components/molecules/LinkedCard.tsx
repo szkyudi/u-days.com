@@ -3,10 +3,20 @@ import Link from 'next/link'
 import variables from '../../lib/styles/variables'
 import Date from '../atoms/Date'
 
+const titleFontSize = {
+  sm: '16px',
+  lg: '20px'
+}
+
+const dateFontSize = {
+  sm: '14px',
+  lg: '16px'
+}
+
 const card = css`
   display: block;
-  padding: ${variables.space.md};
-  background: ${variables.color.surface};
+  padding: ${titleFontSize.sm};
+  background: ${variables.color.white};
   box-shadow: ${variables.shadow.dp1};
   transition: .2s;
   ${variables.rounded}
@@ -18,19 +28,30 @@ const card = css`
   & + & {
     margin-top: ${variables.space.sm};
   }
+  @media (min-width: ${variables.breakpoints.lg}px) {
+    padding: ${titleFontSize.lg};
+  }
 `
 
 const cardTitle = css`
-  font-size: 14px;
+  font-size: ${titleFontSize.sm};
+  font-weight: bold;
   line-height: 1.4;
   color: ${variables.color.onSurface};
+  @media (min-width: ${variables.breakpoints.lg}px) {
+    font-size: ${titleFontSize.lg};
+  }
 `
 
 const cardDate = css`
   display: block;
-  margin-top: ${variables.space.sm};
-  font-size: 12px;
-  color: ${variables.color.textSub};
+  margin-top: ${variables.space.md};
+  font-size: ${dateFontSize.sm};
+  font-style: italic;
+  color: ${variables.color.onSurface};
+  @media (min-width: ${variables.breakpoints.lg}px) {
+    font-size: ${dateFontSize.lg};
+  }
 `
 
 export default function LinkedCard({href, title, date}) {

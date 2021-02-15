@@ -1,5 +1,6 @@
 import { css } from '@emotion/react'
 import Head from 'next/head'
+import config from '../../lib/config'
 import Header from '../organisms/Header'
 import Footer from '../organisms/Footer'
 import LinkedCard from '../molecules/LinkedCard'
@@ -8,10 +9,10 @@ import utils from '../../lib/styles/utils'
 const main = css`
   ${utils.contianer}
   margin-top: ${variables.space.lg};
-  margin-bottom: ${variables.space.xl};
+  margin-bottom: ${variables.space.lg};
   @media (min-width: ${variables.breakpoints.lg}px) {
     margin-top: ${variables.space.xl};
-    margin-bottom: ${variables.space.xxl};
+    margin-bottom: ${variables.space.xl};
   }
 `
 
@@ -26,11 +27,11 @@ export default function Home({ posts }: { posts: Post[]}) {
   return (
     <>
       <Head>
-        <title>u-days｜とあるWebエンジニアのつぶやき</title>
+        <title>{config.title}{config.titleSeperator}{config.subtitle}</title>
       </Head>
       <Header />
       <main css={main}>
-        <h2 css={title}>新着記事一覧</h2>
+        <h2 css={title}>新着記事</h2>
         {posts.map(({ id, publishedAt, title }) => (
           <LinkedCard key={id} href={`/posts/${id}`} title={title} date={publishedAt} />
         ))}
