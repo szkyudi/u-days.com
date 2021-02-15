@@ -4,8 +4,7 @@ import variables from './variables'
 const utils = {
   contianer: css`
     width: 100%;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding: 0 ${variables.space.sm};
     @media (min-width: ${variables.breakpoints.md}px) {
       max-width: ${variables.breakpoints.md}px;
       margin-left: auto;

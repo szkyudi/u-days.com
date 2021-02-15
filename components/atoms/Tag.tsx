@@ -5,12 +5,14 @@ import variables from '../../lib/styles/variables'
 
 const tag = css`
   display: inline-block;
-  font-size: 12px;
+  margin-right: ${variables.space.xs};
   padding: .5em 1em;
   color: ${variables.color.onPrimary};
   background: ${variables.color.primary};
-  margin-right: ${variables.space.xs};
+  font-size: 12px;
+  font-weight: bold;
   transition: .2s;
+  ${variables.rounded};
   &:hover {
     cursor: pointer;
     box-shadow: ${variables.shadow.dp1};
