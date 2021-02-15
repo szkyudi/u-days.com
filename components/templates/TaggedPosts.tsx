@@ -8,12 +8,12 @@ import utils from '../../lib/styles/utils'
 
 const main = css`
   ${utils.contianer}
-  margin-top: ${variables.space.lg};
-  margin-bottom: ${variables.space.xl};
+  margin-top: ${variables.space.md};
+  margin-bottom: ${variables.space.md};
   color: ${variables.color.onBackground};
   @media (min-width: ${variables.breakpoints.lg}px) {
-    margin-top: ${variables.space.xl};
-    margin-bottom: ${variables.space.xxl};
+    margin-top: ${variables.space.lg};
+    margin-bottom: ${variables.space.lg};
   }
 `
 
@@ -33,7 +33,7 @@ export default function TaggedPosts({ tag, posts }: {
   return (
     <>
       <Head>
-        <title>"{tag.name}"のタグが付いた記事｜u-days</title>
+        <title>"{tag.name}"のタグが付いた記事｜U-DAYS</title>
       </Head>
       <Header />
       <main css={main}>

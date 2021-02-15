@@ -1,18 +1,21 @@
 import { css } from '@emotion/react'
 import Head from 'next/head'
+import config from '../../lib/config'
 import variables from '../../lib/styles/variables'
 import utils from '../../lib/styles/utils'
+import Paper from '../../components/atoms/Paper'
 import Header from '../../components/organisms/Header'
 import Footer from '../../components/organisms/Footer'
+import Page from '../../components/organisms/Page'
 
 const section = css`
   ${utils.contianer}
-  margin-top: ${variables.space.lg};
-  margin-bottom: ${variables.space.xl};
+  margin-top: ${variables.space.md};
+  margin-bottom: ${variables.space.md};
   color: ${variables.color.onBackground};
   @media (min-width: ${variables.breakpoints.lg}px) {
-    margin-top: ${variables.space.xl};
-    margin-bottom: ${variables.space.xxl};
+    margin-top: ${variables.space.lg};
+    margin-bottom: ${variables.space.lg};
   }
 `
 
@@ -73,18 +76,17 @@ const postContent = css`
   }
 `
 
-export default function Page({ page }: { page: Page }) {
+export default function PageTemplate({ page }: { page: Page }) {
   return (
     <>
       <Head>
-        <title>{page.title}｜u-days</title>
+        <title>{page.title}{config.titleSeperator}{config.title}</title>
       </Head>
       <Header />
       <section css={section}>
-        <header css={postHeader}>
-          <h1 css={postTitle}>{page.title}</h1>
-        </header>
-        <div css={postContent} dangerouslySetInnerHTML={{ __html: page.contentHtml }} />
+        <Paper>
+          <Page page={page} />
+        </Paper>
       </section>
       <Footer />
     </>

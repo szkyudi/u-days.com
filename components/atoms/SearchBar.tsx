@@ -16,7 +16,7 @@ const input = css`
   border: 1px solid ${variables.color.primaryVariant};
   font-size: 16px;
   color: ${variables.color.onPrimary};
-  background: ${variables.color.background};
+  background: ${variables.color.white};
   ${variables.rounded}
 `
 
