@@ -1,21 +1,21 @@
 interface PostEntry {
   sys: {
-    id: string
-  }
+    id: string;
+  };
   fields: {
-    title: string
-    publishedAt: string
-    body: string
-    thumbnail?: ThumbnailEntry
-    tags?: TagEntry[]
-  }
+    title: string;
+    publishedAt: string;
+    body: string;
+    thumbnail?: ContentfulImageEntry;
+    tags?: TagEntry[];
+  };
 }
 
 interface Post {
-  id: string
-  title: string
-  publishedAt: string
-  contentHtml?: string
-  thumbnail?: Thumbnail
-  tags?: Tag[]
+  id: string;
+  title: string;
+  publishedAt: string;
+  contentHtml?: string;
+  thumbnail?: ContentfulImage;
+  tags?: Tag[];
 }
