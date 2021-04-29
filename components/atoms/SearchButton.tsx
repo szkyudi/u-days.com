@@ -1,7 +1,6 @@
+import Image from 'next/image'
 import { css } from '@emotion/react'
 import React, { useGlobal, setGlobal } from 'reactn'
-import SearchIcon from '@material-ui/icons/Search'
-import CloseIcon from '@material-ui/icons/Close'
 
 const button = css`
   transition: .2s;
@@ -29,9 +28,23 @@ export default function SearchButton() {
   return (
     <>
       {isActive ?
-        <CloseIcon css={button} onClick={inactivate} />
+        <Image
+          css={button}
+          src="/icons/close.svg"
+          width={24}
+          height={24}
+          alt="閉じるアイコン"
+          onClick={inactivate}
+        />
         :
-        <SearchIcon css={button} onClick={activate} />
+        <Image
+          css={button}
+          src="/icons/search.svg"
+          width={24}
+          height={24}
+          alt="検索アイコン"
+          onClick={activate}
+        />
       }
     </>
   )
