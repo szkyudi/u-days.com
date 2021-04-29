@@ -34,6 +34,7 @@ const name = css`
 `
 
 const twitter = css`
+  height: 20px;
   margin-left: ${variables.space.sm};
   transition: .2s;
   &:hover {
