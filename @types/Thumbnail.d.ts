@@ -1,21 +1,20 @@
-interface ThumnailSys {
-  id: string
+interface ThumbnailSys {
+  id: string;
 }
 
 interface ThumbnailFields {
-  title: string
+  title: string;
   file: {
-    url: string
-  }
+    url: string;
+  };
 }
 
 interface ThumbnailEntry {
-  sys: ThumbnailSys
-  fields: ThumbnailFields
+  sys: ThumbnailSys;
+  fields: ThumbnailFields;
 }
 
-
 interface Thumbnail {
-  url: string
-  alt: string
+  url: string;
+  alt: string;
 }
