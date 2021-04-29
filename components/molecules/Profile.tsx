@@ -7,7 +7,6 @@ import utils from '../../lib/styles/utils'
 const profile = css`
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   ${variables.rounded};
 `
 
