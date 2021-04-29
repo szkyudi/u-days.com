@@ -25,5 +25,6 @@ export async function getProfileData(): Promise<Profile> {
     name: profile.fields.name,
     icon: icon,
     bioHtml: bioHtml,
+    twitterId: profile.fields.twitterId,
   };
 }
