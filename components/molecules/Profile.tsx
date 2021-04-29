@@ -8,9 +8,6 @@ const profile = css`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding: ${variables.space.md};
-  background: ${variables.color.white};
-  box-shadow: ${variables.shadow.dp1};
   ${variables.rounded};
 `
 

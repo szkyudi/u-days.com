@@ -24,6 +24,13 @@ const title = css`
   color: ${variables.color.onBackground};
 `
 
+const subTitle = css`
+  margin-bottom: ${variables.space.md};
+  font-size: 20px;
+  font-weight: bold;
+  color: ${variables.color.onBackground};
+`
+
 const aside = css`
   ${utils.contianer}
   margin-bottom: ${variables.space.lg};
@@ -50,7 +57,7 @@ export default function Home({ posts, profile }: {
         ))}
       </main>
       <aside css={aside}>
-        <h2 css={title}>運営者プロフィール</h2>
+        <h2 css={subTitle}>運営者プロフィール</h2>
         <Profile data={profile} />
       </aside>
       <Footer />
