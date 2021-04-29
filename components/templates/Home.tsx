@@ -4,6 +4,7 @@ import config from '../../lib/config'
 import Header from '../organisms/Header'
 import Footer from '../organisms/Footer'
 import LinkedCard from '../molecules/LinkedCard'
+import Profile from '../molecules/Profile'
 import variables from '../../lib/styles/variables'
 import utils from '../../lib/styles/utils'
 const main = css`
@@ -23,7 +24,19 @@ const title = css`
   color: ${variables.color.onBackground};
 `
 
-export default function Home({ posts }: { posts: Post[]}) {
+const aside = css`
+  ${utils.contianer}
+  margin-bottom: ${variables.space.lg};
+  @media (min-width: ${variables.breakpoints.lg}px) {
+    margin-bottom: ${variables.space.xl};
+  }
+`
+
+
+export default function Home({ posts, profile }: {
+  posts: Post[],
+  profile: Profile
+}) {
   return (
     <>
       <Head>
@@ -36,6 +49,10 @@ export default function Home({ posts }: { posts: Post[]}) {
           <LinkedCard key={id} href={`/posts/${id}`} title={title} date={publishedAt} />
         ))}
       </main>
+      <aside css={aside}>
+        <h2 css={title}>運営者プロフィール</h2>
+        <Profile data={profile} />
+      </aside>
       <Footer />
     </>
   )
