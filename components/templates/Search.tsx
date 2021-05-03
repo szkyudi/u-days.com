@@ -9,12 +9,12 @@ import utils from '../../lib/styles/utils'
 
 const main = css`
   ${utils.contianer}
-  margin-top: ${variables.space.md};
-  margin-bottom: ${variables.space.md};
+  margin-top: ${variables.space.lg};
+  margin-bottom: ${variables.space.lg};
   color: ${variables.color.onBackground};
   @media (min-width: ${variables.breakpoints.lg}px) {
-    margin-top: ${variables.space.lg};
-    margin-bottom: ${variables.space.lg};
+    margin-top: ${variables.space.xl};
+    margin-bottom: ${variables.space.xl};
   }
 `
 
