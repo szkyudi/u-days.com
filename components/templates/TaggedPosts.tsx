@@ -1,34 +1,12 @@
-import { css } from '@emotion/react'
 import Head from 'next/head'
 import Header from '../organisms/Header'
+import PostList from '../organisms/PostList'
 import Footer from '../organisms/Footer'
-import LinkedCard from '../molecules/LinkedCard'
-import variables from '../../lib/styles/variables'
-import utils from '../../lib/styles/utils'
 
-const main = css`
-  ${utils.contianer}
-  margin-top: ${variables.space.md};
-  margin-bottom: ${variables.space.md};
-  color: ${variables.color.onBackground};
-  @media (min-width: ${variables.breakpoints.lg}px) {
-    margin-top: ${variables.space.lg};
-    margin-bottom: ${variables.space.lg};
-  }
-`
-
-const title = css`
-  margin-top: ${variables.space.lg};
-  margin-bottom: ${variables.space.md};
-  font-size: 24px;
-  font-weight: bold;
-  color: ${variables.color.onBackground};
-`
-
-
-export default function TaggedPosts({ tag, posts }: {
+export default function TaggedPosts({ tag, posts, profile }: {
   tag: Tag
-  posts: Post[]
+  posts: Post[],
+  profile: Profile
 }) {
   return (
     <>
@@ -36,12 +14,11 @@ export default function TaggedPosts({ tag, posts }: {
         <title>"{tag.name}"のタグが付いた記事｜U-DAYS</title>
       </Head>
       <Header />
-      <main css={main}>
-        <h2 css={title}>"{tag.name}"のタグが付いた記事</h2>
-        {posts.map(({ id, title, publishedAt }) => (
-          <LinkedCard key={id} href={`/posts/${id}`} title={title} date={publishedAt} />
-        ))}
-      </main>
+      <PostList
+        heading={`"${tag.name}"のタグが付いた記事`}
+        posts={posts}
+        profile={profile}
+      />
       <Footer />
     </>
   )
