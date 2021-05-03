@@ -1,6 +1,8 @@
 import { css } from '@emotion/react'
+import { useEffect, useRef } from 'react';
 import variables from '../../lib/styles/variables'
 import postContent from '../../lib/styles/postContent'
+import setAttributeToExternalLink from '../../lib/utils/setAttributeToExternalLink'
 
 const header = css`
   margin-bottom: ${variables.space.sm};
@@ -15,12 +17,16 @@ const title = css`
 const content = postContent
 
 export default function Page({ page }: { page: Page }) {
+  const contentDOM = useRef(null)
+  useEffect(() => {
+    setAttributeToExternalLink(contentDOM.current);
+  })
   return (
     <>
       <header css={header}>
         <h1 css={title}>{page.title}</h1>
       </header>
-      <div css={content} dangerouslySetInnerHTML={{ __html: page.contentHtml }} />
+      <div ref={contentDOM} css={content} dangerouslySetInnerHTML={{ __html: page.contentHtml }} />
     </>
   )
 }
