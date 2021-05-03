@@ -1,8 +1,10 @@
 import { css } from '@emotion/react'
+import { useEffect, useRef } from 'react';
 import Date from '../atoms/Date'
 import Tag from '../atoms/Tag'
 import variables from '../../lib/styles/variables'
 import postContent from '../../lib/styles/postContent'
+import setAttributeToExternalLink from '../../lib/utils/setAttributeToExternalLink'
 
 const header = css`
   margin-bottom: ${variables.space.sm};
@@ -33,6 +35,10 @@ const date = css`
 const content = postContent
 
 export default function Post({ post }: { post: Post }) {
+  const contentDOM = useRef(null)
+  useEffect(() => {
+    setAttributeToExternalLink(contentDOM.current);
+  })
   return (
     <>
       <header css={header}>
@@ -47,7 +53,7 @@ export default function Post({ post }: { post: Post }) {
         </div>
         {post.thumbnail ? <img css={img} src={post.thumbnail.url} alt={post.thumbnail.alt} /> : ''}
       </header>
-      <div css={content} dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+      <div ref={contentDOM} css={content} dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
     </>
   )
 }
