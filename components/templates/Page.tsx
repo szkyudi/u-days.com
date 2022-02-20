@@ -7,6 +7,7 @@ import Paper from '../../components/atoms/Paper'
 import Header from '../../components/organisms/Header'
 import Footer from '../../components/organisms/Footer'
 import Page from '../../components/organisms/Page'
+import { IPage } from '../../@types/generated/contentful'
 
 const section = css`
   ${utils.contianer}
@@ -76,11 +77,11 @@ const postContent = css`
   }
 `
 
-export default function PageTemplate({ page }: { page: Page }) {
+export default function PageTemplate({ page }: { page: IPage }) {
   return (
     <>
       <Head>
-        <title>{page.title}{config.titleSeperator}{config.title}</title>
+        <title>{page.fields.title}{config.titleSeperator}{config.title}</title>
       </Head>
       <Header />
       <section css={section}>

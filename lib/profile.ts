@@ -1,6 +1,7 @@
 const contentful = require("contentful");
 import remark from "remark";
 import html from "remark-html";
+import { IProfile } from "../@types/generated/contentful";
 
 const client = contentful.createClient({
   space: "qldauggibp1f",
@@ -9,22 +10,11 @@ const client = contentful.createClient({
 
 const PROFILE_ID = "jJW1tzhmlClF1LXPv7AtD";
 
-export async function getProfileData(): Promise<Profile> {
-  const profile: ProfileEntity = await client.getEntry(PROFILE_ID);
+export async function getProfileData(): Promise<IProfile> {
+  const profile: IProfile = await client.getEntry(PROFILE_ID);
   const processedContent = await remark().use(html).process(profile.fields.bio);
-  const bioHtml = processedContent.toString();
+  const convertedHtml = processedContent.toString();
 
-  const icon = profile.fields.icon
-    ? {
-        alt: profile.fields.icon.fields.title,
-        url: profile.fields.icon.fields.file.url,
-      }
-    : null;
-
-  return {
-    name: profile.fields.name,
-    icon: icon,
-    bioHtml: bioHtml,
-    twitterId: profile.fields.twitterId,
-  };
+  profile.fields.bio = convertedHtml;
+  return profile;
 }

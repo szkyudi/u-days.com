@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next'
+import { IPosts, IProfile } from '../@types/generated/contentful'
 import HomeTemplate from '../components/templates/Home'
 import { getSortedPostsData } from '../lib/posts'
 import { getProfileData } from '../lib/profile'
@@ -15,8 +16,8 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export default function Home(props: {
-  posts: Post[],
-  profile: Profile
+  posts: IPosts[],
+  profile: IProfile
 }) {
   return <HomeTemplate posts={props.posts} profile={props.profile} />
 }

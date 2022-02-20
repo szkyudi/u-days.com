@@ -1,8 +1,7 @@
 import Image from 'next/image'
 import { css } from '@emotion/react'
-import Paper from '../atoms/Paper'
 import variables from '../../lib/styles/variables'
-import utils from '../../lib/styles/utils'
+import { IProfile, IProfileFields } from '../../@types/generated/contentful'
 
 const profile = css`
   display: flex;
@@ -42,14 +41,14 @@ const twitter = css`
   }
 `
 
-export default function Profile({ data }: { data: Profile }) {
+export default function Profile({ data }: { data: IProfile }) {
   return (
     <div css={profile}>
-      {data.icon ? <img css={img} src={data.icon.url} alt={data.icon.alt} /> : ''}
+      {data.fields.icon ? <img css={img} src={data.fields.icon?.fields.file.url} alt={data.fields.icon.fields.title} /> : ''}
       <div css={contents}>
         <div css={contentsHeader}>
-          <h3 css={name}>{data.name}</h3>
-          <a css={twitter} href={`https://twitter.com/${data.twitterId}`} target="_blank">
+          <h3 css={name}>{data.fields.name}</h3>
+          <a css={twitter} href={`https://twitter.com/${data.fields.twitterId}`} target="_blank">
             <Image
               src="/logos/twitter-logo-blue.svg"
               width={20}
@@ -58,7 +57,7 @@ export default function Profile({ data }: { data: Profile }) {
             />
           </a>
         </div>
-        <div dangerouslySetInnerHTML={{ __html: data.bioHtml }} />
+        <div dangerouslySetInnerHTML={{ __html: data.fields.bio }} />
       </div>
     </div>
   )

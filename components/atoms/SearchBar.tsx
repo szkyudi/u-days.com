@@ -48,7 +48,7 @@ export default function SearchBar(props) {
     e.preventDefault();
     setInputValue(e.target.value)
   }
-  
+
   useEffect(() => {
     if (selected) {
       inputElement.current.select()
@@ -61,12 +61,11 @@ export default function SearchBar(props) {
       inputElement.current.blur()
     }
   })
-  
+
   return (
     <form onSubmit={getSearchPage}>
       <label css={label} htmlFor="searchBar">
         <input
-          className={props.className}
           ref={inputElement}
           css={input}
           type="text"
