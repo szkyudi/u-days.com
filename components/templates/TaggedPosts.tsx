@@ -2,20 +2,21 @@ import Head from 'next/head'
 import Header from '../organisms/Header'
 import PostList from '../organisms/PostList'
 import Footer from '../organisms/Footer'
+import { IPosts, IProfile, ITags } from '../../@types/generated/contentful'
 
 export default function TaggedPosts({ tag, posts, profile }: {
-  tag: Tag
-  posts: Post[],
-  profile: Profile
+  tag: ITags
+  posts: IPosts[],
+  profile: IProfile
 }) {
   return (
     <>
       <Head>
-        <title>"{tag.name}"のタグが付いた記事｜U-DAYS</title>
+        <title>"{tag.fields.name}"のタグが付いた記事｜U-DAYS</title>
       </Head>
       <Header />
       <PostList
-        heading={`"${tag.name}"のタグが付いた記事`}
+        heading={`"${tag.fields.name}"のタグが付いた記事`}
         posts={posts}
         profile={profile}
       />

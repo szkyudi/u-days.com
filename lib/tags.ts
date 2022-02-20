@@ -1,3 +1,6 @@
+import { ContentfulCollection } from "contentful"
+import { ITags } from "../@types/generated/contentful"
+
 const contentful =  require('contentful')
 
 const client = contentful.createClient({
@@ -6,8 +9,8 @@ const client = contentful.createClient({
 })
 
 export async function getAllTagsIds() {
-  const entries: any = await client.getEntries({content_type: 'tags'})
-  return entries.items.map((tag: TagEntry) => {
+  const entries: ContentfulCollection<ITags> = await client.getEntries({content_type: 'tags'})
+  return entries.items.map((tag) => {
     return {
       params: {
         slug: tag.fields.slug,
@@ -16,18 +19,12 @@ export async function getAllTagsIds() {
   })
 }
 
-export async function getTagData(slug: string): Promise<Tag> {
-  const tags: any = await client.getEntries({
+export async function getTagData(slug: string): Promise<ITags> {
+  const tags: ContentfulCollection<ITags> = await client.getEntries({
     content_type: 'tags',
     'fields.slug': slug,
     limit: 1
   })
 
-  const tag: TagEntry = tags.items[0]
-
-  return {
-    id: tag.sys.id,
-    slug: tag.fields.slug,
-    name: tag.fields.name
-  }
+  return tags.items[0]
 }

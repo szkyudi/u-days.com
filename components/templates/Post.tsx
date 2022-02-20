@@ -7,6 +7,7 @@ import Post from '../organisms/Post'
 import variables from '../../lib/styles/variables'
 import utils from '../../lib/styles/utils'
 import Profile from '../molecules/Profile'
+import { IPosts, IProfile } from '../../@types/generated/contentful'
 
 const main = css`
   ${utils.contianer}
@@ -33,13 +34,13 @@ const asideTitle = css`
 `
 
 export default function PostTemplate({ post, profile }: {
-   post: Post,
-   profile: Profile
+   post: IPosts,
+   profile: IProfile
 }) {
   return (
     <>
       <Head>
-        <title>{post.title}</title>
+        <title>{post.fields.title}</title>
       </Head>
       <Header />
       <main css={main}>

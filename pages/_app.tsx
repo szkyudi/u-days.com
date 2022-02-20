@@ -2,13 +2,10 @@ import { AppProps } from 'next/app'
 import { Global, css } from '@emotion/react'
 import NProgress from 'nprogress';
 import Router from 'next/router';
-import { useRouter } from 'next/router'
 //@ts-ignore
 import destyle from 'destyle.css'
 import commonStyle from '../lib/styles/common'
 import nprogressStyle from '../lib/styles/nprogress'
-import { useEffect } from 'react';
-import * as gtag from '../lib/gtag'
 
 NProgress.configure({
     minimum: 0.2,
