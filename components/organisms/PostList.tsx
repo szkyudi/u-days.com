@@ -3,6 +3,7 @@ import LinkedCard from '../molecules/LinkedCard'
 import Profile from '../molecules/Profile'
 import variables from '../../lib/styles/variables'
 import utils from '../../lib/styles/utils'
+import { IPosts, IProfile } from '../../@types/generated/contentful'
 
 const main = css`
   ${utils.contianer}
@@ -39,16 +40,16 @@ const aside = css`
 
 export default function PostList({ heading, posts, profile }: {
   heading: string,
-  posts: Post[],
-  profile: Profile
+  posts: IPosts[],
+  profile: IProfile
 }) {
   const havePosts = Object.keys(posts).length > 0 ? true : false;
   return (
     <>
       <main css={main}>
         <h2 css={title}>{heading}</h2>
-        {posts.map(({ id, publishedAt, title }) => (
-          <LinkedCard key={id} href={`/posts/${id}`} title={title} date={publishedAt} />
+        {posts.map(({ sys, fields }) => (
+          <LinkedCard key={sys.id} href={`/posts/${sys.id}`} title={fields.title} date={fields.publishedAt} />
         ))}
         {havePosts || <p>記事が見つかりませんでした。</p>}
       </main>

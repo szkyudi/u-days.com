@@ -3,10 +3,11 @@ import config from '../../lib/config'
 import Header from '../organisms/Header'
 import PostList from '../organisms/PostList'
 import Footer from '../organisms/Footer'
+import { IPosts, IProfile } from '../../@types/generated/contentful'
 
 export default function Home({ posts, profile }: {
-  posts: Post[],
-  profile: Profile
+  posts: IPosts[],
+  profile: IProfile
 }) {
   return (
     <>

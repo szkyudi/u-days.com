@@ -3,11 +3,12 @@ import config from '../../lib/config'
 import Header from '../organisms/Header'
 import PostList from '../organisms/PostList'
 import Footer from '../organisms/Footer'
+import { IPosts, IProfile } from '../../@types/generated/contentful'
 
 export default function Search({ keyword, posts, profile }: {
   keyword: string,
-  posts: Post[],
-  profile: Profile
+  posts: IPosts[],
+  profile: IProfile
 }) {
   const havePosts = Object.keys(posts).length > 0 ? true : false;
   return (
