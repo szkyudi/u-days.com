@@ -41,7 +41,7 @@ export interface IPostsFields {
   thumbnail?: Asset | undefined;
 
   /** Tags */
-  tags?: Entry<{ [fieldId: string]: unknown }>[] | undefined;
+  tags?: Entry<ITagsFields>[] | undefined;
 
   /** Body */
   body: string;
