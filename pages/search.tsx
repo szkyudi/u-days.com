@@ -1,4 +1,5 @@
 import { GetServerSideProps } from 'next'
+import { IPosts, IProfile } from '../@types/generated/contentful'
 import SearchTemplate from '../components/templates/Search'
 import { getSortedPostsData } from '../lib/posts'
 import { getProfileData } from '../lib/profile'
@@ -17,8 +18,8 @@ export const getServerSideProps: GetServerSideProps = async ({query}: {query: an
 
 export default function Search({ keyword, posts, profile }: {
   keyword: string,
-  posts:Post[],
-  profile: Profile
+  posts: IPosts[],
+  profile: IProfile
 }) {
   return <SearchTemplate keyword={keyword} posts={posts} profile={profile} />
 }
