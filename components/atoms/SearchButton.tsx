@@ -1,14 +1,6 @@
 import Image from 'next/image'
 import { css } from '@emotion/react'
-import React, { useGlobal, setGlobal } from 'reactn'
-
-const button = css`
-  transition: .2s;
-  &:hover {
-    cursor: pointer;
-    opacity: .6;
-  }
-`
+import { useGlobal, setGlobal } from 'reactn'
 
 setGlobal({selectedSearchInput: true})
 
@@ -29,7 +21,7 @@ export default function SearchButton() {
     <>
       {isActive ?
         <Image
-          css={button}
+          css={styles.button}
           src="/icons/close.svg"
           width={24}
           height={24}
@@ -38,7 +30,7 @@ export default function SearchButton() {
         />
         :
         <Image
-          css={button}
+          css={styles.button}
           src="/icons/search.svg"
           width={24}
           height={24}
@@ -48,4 +40,15 @@ export default function SearchButton() {
       }
     </>
   )
+}
+
+
+const styles = {
+  button: css`
+    transition: .2s;
+    &:hover {
+      cursor: pointer;
+      opacity: .6;
+    }
+  `
 }
