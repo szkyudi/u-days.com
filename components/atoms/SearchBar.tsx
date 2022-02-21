@@ -5,21 +5,6 @@ import Router from 'next/router'
 import variables from '../../lib/styles/variables'
 import * as gtag from '../../lib/gtag'
 
-const label = css`
-  display: block;
-`
-
-const input = css`
-  display: block;
-  width: 100%;
-  padding: .5em;
-  border: 1px solid ${variables.color.primaryVariant};
-  font-size: 16px;
-  color: ${variables.color.onPrimary};
-  background: ${variables.color.white};
-  ${variables.rounded}
-`
-
 export default function SearchBar(props) {
   const [isActive, setIsActive] = useGlobal('isSearchBarActive')
   const [selected, setSelected] = useGlobal('selectedSearchInput')
@@ -64,10 +49,10 @@ export default function SearchBar(props) {
 
   return (
     <form onSubmit={getSearchPage}>
-      <label css={label} htmlFor="searchBar">
+      <label css={styles.label} htmlFor="searchBar">
         <input
           ref={inputElement}
-          css={input}
+          css={styles.input}
           type="text"
           value={inputValue}
           onChange={changeSearchInput}
@@ -77,4 +62,20 @@ export default function SearchBar(props) {
       </label>
     </form>
   )
+}
+
+const styles = {
+  label: css`
+    display: block;
+  `,
+  input: css`
+    display: block;
+    width: 100%;
+    padding: .5em;
+    border: 1px solid ${variables.color.primaryVariant};
+    font-size: 16px;
+    color: ${variables.color.onPrimary};
+    background: ${variables.color.white};
+    ${variables.rounded}
+  `
 }

@@ -9,30 +9,6 @@ import utils from '../../lib/styles/utils'
 import Profile from '../molecules/Profile'
 import { IPosts, IProfile } from '../../@types/generated/contentful'
 
-const main = css`
-  ${utils.contianer}
-  margin-top: ${variables.space.md};
-  margin-bottom: ${variables.space.lg};
-  @media (min-width: ${variables.breakpoints.md}px) {
-    margin-top: ${variables.space.lg};
-    margin-bottom: ${variables.space.xl};
-  }
-`
-
-const aside = css`
-  ${utils.contianer}
-  margin-bottom: ${variables.space.lg};
-  @media (min-width: ${variables.breakpoints.lg}px) {
-    margin-bottom: ${variables.space.xl};
-  }
-`
-
-const asideTitle = css`
-  margin-bottom: ${variables.space.md};
-  font-size: 20px;
-  font-weight: bold;
-`
-
 export default function PostTemplate({ post, profile }: {
    post: IPosts,
    profile: IProfile
@@ -43,18 +19,42 @@ export default function PostTemplate({ post, profile }: {
         <title>{post.fields.title}</title>
       </Head>
       <Header />
-      <main css={main}>
+      <main css={styles.main}>
         <section>
           <Paper>
             <Post post={post} />
           </Paper>
         </section>
       </main>
-      <aside css={aside}>
-        <h2 css={asideTitle}>運営者プロフィール</h2>
+      <aside css={styles.aside}>
+        <h2 css={styles.asideTitle}>運営者プロフィール</h2>
         <Profile data={profile} />
       </aside>
       <Footer />
     </>
   )
+}
+
+const styles = {
+  main: css`
+    ${utils.contianer}
+    margin-top: ${variables.space.md};
+    margin-bottom: ${variables.space.lg};
+    @media (min-width: ${variables.breakpoints.md}px) {
+      margin-top: ${variables.space.lg};
+      margin-bottom: ${variables.space.xl};
+    }
+  `,
+  aside: css`
+    ${utils.contianer}
+    margin-bottom: ${variables.space.lg};
+    @media (min-width: ${variables.breakpoints.lg}px) {
+      margin-bottom: ${variables.space.xl};
+    }
+  `,
+  asideTitle: css`
+    margin-bottom: ${variables.space.md};
+    font-size: 20px;
+    font-weight: bold;
+  `
 }
