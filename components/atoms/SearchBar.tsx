@@ -1,13 +1,14 @@
 import { css } from '@emotion/react'
-import { useGlobal } from 'reactn'
 import { useState, useEffect, useRef } from 'react'
 import Router from 'next/router'
 import variables from '../../lib/styles/variables'
 import * as gtag from '../../lib/gtag'
+import { useRecoilState } from 'recoil'
+import { searchBarIsActiveState, searchBarSelectedState } from '../../lib/states/searchBar'
 
 export default function SearchBar(props) {
-  const [isActive, setIsActive] = useGlobal('isSearchBarActive')
-  const [selected, setSelected] = useGlobal('selectedSearchInput')
+  const [isActive, setIsActive] = useRecoilState(searchBarIsActiveState)
+  const [selected, setSelected] = useRecoilState(searchBarSelectedState)
   const [inputValue, setInputValue] = useState('')
   const inputElement = useRef(null)
 
