@@ -6,6 +6,7 @@ import Router from 'next/router';
 import destyle from 'destyle.css'
 import commonStyle from '../lib/styles/common'
 import nprogressStyle from '../lib/styles/nprogress'
+import { RecoilRoot } from 'recoil';
 
 NProgress.configure({
     minimum: 0.2,
@@ -20,9 +21,9 @@ Router.events.on('routeChangeError', () => NProgress.done())
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <RecoilRoot>
       <Global styles={[css`${destyle}`, nprogressStyle, commonStyle]} />
       <Component {...pageProps} />
-    </>
+    </RecoilRoot>
   )
 }
