@@ -1,17 +1,15 @@
 import { css } from '@emotion/react'
-import React, { setGlobal, useGlobal } from 'reactn'
 import utils from '../../lib/styles/utils'
 import variables from '../../lib/styles/variables'
-import animations from '../../lib/styles/animations'
 import HeaderLogo from '../molecules/HeaderLogo'
 import SearchButton from '../atoms/SearchButton'
 import SearchBar from '../atoms/SearchBar'
+import { useRecoilState } from 'recoil'
+import { searchBarIsActiveState } from '../../lib/states/searchBar'
 
-
-setGlobal({isSearchBarActive: false})
 
 export default function Header() {
-  const [isSearchBarActive, setIsSearchBarActive] = useGlobal('isSearchBarActive')
+  const [isSearchBarActive, setIsSearchBarActive] = useRecoilState(searchBarIsActiveState);
 
   function inactivateSearchBar() {
     setIsSearchBarActive(false);
