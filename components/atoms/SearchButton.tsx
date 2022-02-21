@@ -1,12 +1,11 @@
 import Image from 'next/image'
 import { css } from '@emotion/react'
-import { useGlobal, setGlobal } from 'reactn'
-
-setGlobal({selectedSearchInput: true})
+import { useRecoilState, useSetRecoilState } from 'recoil'
+import { searchBarIsActiveState, searchBarSelectedState } from '../../lib/states/searchBar'
 
 export default function SearchButton() {
-  const [isActive, setIsActive] = useGlobal('isSearchBarActive')
-  const [selected, setSelected] = useGlobal('selectedSearchInput')
+  const [isActive, setIsActive] = useRecoilState(searchBarIsActiveState)
+  const setSelected = useSetRecoilState(searchBarSelectedState)
 
   function inactivate() {
     setIsActive(false)
