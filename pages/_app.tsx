@@ -4,6 +4,8 @@ import NProgress from 'nprogress';
 import Router from 'next/router';
 //@ts-ignore
 import destyle from 'destyle.css'
+//@ts-ignore
+import highlight from "highlight.js/styles/github.css";
 import commonStyle from '../lib/styles/common'
 import nprogressStyle from '../lib/styles/nprogress'
 import { RecoilRoot } from 'recoil';
@@ -22,7 +24,7 @@ Router.events.on('routeChangeError', () => NProgress.done())
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <RecoilRoot>
-      <Global styles={[css`${destyle}`, nprogressStyle, commonStyle]} />
+      <Global styles={[css`${destyle}`, css`${highlight}`, nprogressStyle, commonStyle]} />
       <Component {...pageProps} />
     </RecoilRoot>
   )

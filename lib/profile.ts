@@ -1,6 +1,4 @@
 const contentful = require("contentful");
-import remark from "remark";
-import html from "remark-html";
 import { IProfile } from "../@types/generated/contentful";
 
 const client = contentful.createClient({
@@ -12,9 +10,5 @@ const PROFILE_ID = "jJW1tzhmlClF1LXPv7AtD";
 
 export async function getProfileData(): Promise<IProfile> {
   const profile: IProfile = await client.getEntry(PROFILE_ID);
-  const processedContent = await remark().use(html).process(profile.fields.bio);
-  const convertedHtml = processedContent.toString();
-
-  profile.fields.bio = convertedHtml;
   return profile;
 }
