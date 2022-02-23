@@ -2,8 +2,7 @@ import Image from 'next/image'
 import { css } from '@emotion/react'
 import variables from '../../lib/styles/variables'
 import { IProfile } from '../../@types/generated/contentful'
-
-
+import { Markdown } from './Markdown'
 
 export default function Profile({ data }: { data: IProfile }) {
   return (
@@ -21,7 +20,9 @@ export default function Profile({ data }: { data: IProfile }) {
             />
           </a>
         </div>
-        <div dangerouslySetInnerHTML={{ __html: data.fields.bio }} />
+        <Markdown>
+          {data.fields.bio}
+        </Markdown>
       </div>
     </div>
   )
