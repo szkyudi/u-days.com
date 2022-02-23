@@ -1,7 +1,5 @@
 const contentful = require("contentful");
 import { ContentfulCollection } from "contentful";
-import remark from "remark";
-import html from "remark-html";
 import { IPosts } from "../@types/generated/contentful";
 
 const client = contentful.createClient({
@@ -50,9 +48,5 @@ export async function getAllPostsIds() {
 
 export async function getPostData(id: string) {
   const post: IPosts = await client.getEntry(id);
-  const processedContent = await remark().use(html).process(post.fields.body);
-  const convertedHtml = processedContent.toString();
-
-  post.fields.body = convertedHtml;
   return post
 }

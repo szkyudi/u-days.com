@@ -6,12 +6,9 @@ import variables from '../../lib/styles/variables'
 import postContent from '../../lib/styles/postContent'
 import setAttributeToExternalLink from '../../lib/utils/setAttributeToExternalLink'
 import { IPosts } from '../../@types/generated/contentful';
+import { Markdown } from '../molecules/Markdown';
 
 export default function Post({ post }: { post: IPosts }) {
-  const contentDOM = useRef(null)
-  useEffect(() => {
-    setAttributeToExternalLink(contentDOM.current);
-  })
   return (
     <>
       <header css={styles.header}>
@@ -26,7 +23,10 @@ export default function Post({ post }: { post: IPosts }) {
         </div>
         {post.fields.thumbnail ? <img css={styles.img} src={post.fields.thumbnail.fields.file.url} alt={post.fields.thumbnail.fields.title} /> : ''}
       </header>
-      <div ref={contentDOM} css={styles.content} dangerouslySetInnerHTML={{ __html: post.fields.body }} />
+      <Markdown
+        css={styles.content}>
+        {post.fields.body}
+      </Markdown>
     </>
   )
 }
