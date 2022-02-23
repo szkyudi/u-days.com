@@ -30,9 +30,12 @@
     "gray-matter": "^4.0.2",
     "highlight.js": "^11.4.0",
     "next": "^12.1.0",
+    "next-transpile-modules": "^9.0.0",
     "nprogress": "^0.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-markdown": "^8.0.0",
+    "react-syntax-highlighter": "^15.4.5",
     "recoil": "^0.6.1",
     "remark": "^13.0.0",
     "remark-highlight.js": "^7.0.1",
@@ -41,6 +44,7 @@
   },
   "devDependencies": {
     "@types/gtag.js": "^0.0.8",
+    "@types/react-syntax-highlighter": "^13.5.2",
     "prettier": "^2.5.1"
   }
 }
