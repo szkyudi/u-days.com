@@ -2,8 +2,8 @@ const contentful = require("contentful");
 import { IProfile } from "../@types/generated/contentful";
 
 const client = contentful.createClient({
-  space: "qldauggibp1f",
-  accessToken: "Ncaig05I3g2XVfMOw5Aw1dP5LgKPCwRNQOskyGKIFdU",
+  space: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN,
 });
 
 const PROFILE_ID = "jJW1tzhmlClF1LXPv7AtD";
