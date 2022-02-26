@@ -3,9 +3,16 @@ import { ContentfulCollection } from "contentful";
 import { IPosts } from "../@types/generated/contentful";
 
 const client = contentful.createClient({
-  space: "qldauggibp1f",
-  accessToken: "Ncaig05I3g2XVfMOw5Aw1dP5LgKPCwRNQOskyGKIFdU",
+  space: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN,
 });
+
+const previewClient = require("contentful").createClient({
+  space: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_PREVIEW_TOKEN,
+  host: "preview.contentful.com",
+});
+
 
 export async function getSortedPostsData(keyword: string = "") {
   const posts: ContentfulCollection<IPosts>  = await client.getEntries({
@@ -48,5 +55,10 @@ export async function getAllPostsIds() {
 
 export async function getPostData(id: string) {
   const post: IPosts = await client.getEntry(id);
+  return post
+}
+
+export async function getPreviewPostData(id: string) {
+  const post: IPosts = await previewClient.getEntry(id)
   return post
 }

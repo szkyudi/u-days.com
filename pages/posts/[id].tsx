@@ -1,28 +1,28 @@
-import { GetStaticProps, GetStaticPaths } from 'next'
+import { GetStaticProps, GetStaticPaths, GetStaticPropsContext } from 'next'
 import { IPosts, IProfile } from '../../@types/generated/contentful'
 import PostTemplate from '../../components/templates/Post'
-import { getAllPostsIds, getPostData } from '../../lib/posts'
+import { getAllPostsIds, getPostData, getPreviewPostData } from '../../lib/posts'
 import { getProfileData } from '../../lib/profile'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getAllPostsIds()
   return {
     paths,
-    fallback: false
+    fallback: true
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }: {
-  params: {
-    id: string
-  }
-}) => {
-  const post = await getPostData(params.id)
+type Params = {
+  id: string
+}
+export const getStaticProps: GetStaticProps = async ({ params, preview = false }: GetStaticPropsContext<Params>) => {
+  const post = preview ? await getPreviewPostData(params.id) : await getPostData(params.id)
   const profile = await getProfileData()
   return {
     props: {
       post,
-      profile
+      profile,
+      preview,
     }
   }
 }
