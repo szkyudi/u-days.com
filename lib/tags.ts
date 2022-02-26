@@ -4,9 +4,9 @@ import { ITags } from "../@types/generated/contentful"
 const contentful =  require('contentful')
 
 const client = contentful.createClient({
-  space: 'qldauggibp1f',
-  accessToken: 'Ncaig05I3g2XVfMOw5Aw1dP5LgKPCwRNQOskyGKIFdU'
-})
+  space: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN,
+});
 
 export async function getAllTagsIds() {
   const entries: ContentfulCollection<ITags> = await client.getEntries({content_type: 'tags'})
