@@ -26,6 +26,8 @@ const preview = async (req: Request, res: NextApiResponse) => {
       res.redirect(`/posts/${data.sys.id}`)
     case 'page':
       res.redirect(`/${data.fields.slug}`)
+    default:
+      return res.status(404).json({ message: 'Invalid type'})
   }
 }
 
