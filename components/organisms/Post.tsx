@@ -1,12 +1,11 @@
 import { css } from '@emotion/react'
-import { useEffect, useRef } from 'react';
 import Date from '../atoms/Date'
 import Tag from '../atoms/Tag'
 import variables from '../../lib/styles/variables'
 import postContent from '../../lib/styles/postContent'
-import setAttributeToExternalLink from '../../lib/utils/setAttributeToExternalLink'
 import { IPosts } from '../../@types/generated/contentful';
 import { Markdown } from '../molecules/Markdown';
+import Image from 'next/image'
 
 export default function Post({ post }: { post: IPosts }) {
   return (
@@ -21,7 +20,16 @@ export default function Post({ post }: { post: IPosts }) {
             <Tag key={tag.fields.slug} slug={tag.fields.slug}>{tag.fields.name}</Tag>
           )) : ''}
         </div>
-        {post.fields.thumbnail ? <img css={styles.img} src={post.fields.thumbnail.fields.file.url} alt={post.fields.thumbnail.fields.title} /> : ''}
+        {post.fields.thumbnail &&
+          <div css={styles.imgWrapper}>
+            <Image
+              width={post.fields.thumbnail.fields.file.details.image.width}
+              height={post.fields.thumbnail.fields.file.details.image.height}
+              src={`http:${post.fields.thumbnail.fields.file.url}`}
+              alt={post.fields.thumbnail.fields.title}
+            />
+          </div>
+        }
       </header>
       <Markdown
         css={styles.content}>
@@ -43,7 +51,7 @@ const styles = {
   tags: css`
     margin-top: ${variables.space.md};
   `,
-  img: css`
+  imgWrapper: css`
     display: block;
     width: 100%;
     margin-top: ${variables.space.md};

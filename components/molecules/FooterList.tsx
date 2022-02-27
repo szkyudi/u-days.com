@@ -11,7 +11,7 @@ export default function FooterList() {
         </Link>
       </li>
       <li css={styles.item}>
-        <Link href="/privacy">
+        <Link href="/privacy-policy">
           <a css={styles.link}>プライバシーポリシー</a>
         </Link>
       </li>
