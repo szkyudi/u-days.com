@@ -53,11 +53,17 @@ export async function getAllPostsIds() {
 }
 
 export async function getPostData(id: string) {
-  const post: IPosts = await client.getEntry(id);
-  return post
+  try {
+    return await client.getEntry(id) as IPosts;
+  } catch {
+    return undefined
+  }
 }
 
 export async function getPreviewPostData(id: string) {
-  const post: IPosts = await previewClient.getEntry(id)
-  return post
+  try {
+    return await previewClient.getEntry(id) as IPosts
+  } catch {
+    return undefined
+  }
 }
