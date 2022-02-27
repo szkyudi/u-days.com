@@ -1,9 +1,9 @@
 const contentful = require('contentful')
 import { IPage } from '../@types/generated/contentful'
 
-const client = contentful.createClient({
-  space: process.env.CONTENTFUL_SPACE_ID,
-  accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN,
+const client = require("contentful").createClient({
+  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
+  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_DELIVERY_TOKEN,
 });
 
 export async function getPageData(id: string): Promise<IPage> {
