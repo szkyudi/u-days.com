@@ -14,7 +14,7 @@ export default function Search({ keyword, posts, profile }: {
   return (
     <>
       <Head>
-        <title>"{keyword}"の検索結果{config.titleSeperator}{config.title}</title>
+        <title>&quot;{keyword}&quot;の検索結果{config.titleSeperator}{config.title}</title>
       </Head>
       <Header />
       <PostList

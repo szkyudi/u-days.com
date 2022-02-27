@@ -12,7 +12,7 @@ export default function TaggedPosts({ tag, posts, profile }: {
   return (
     <>
       <Head>
-        <title>"{tag.fields.name}"のタグが付いた記事｜U-DAYS</title>
+        <title>&quot;{tag.fields.name}&quot;のタグが付いた記事|U-DAYS</title>
       </Head>
       <Header />
       <PostList

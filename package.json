@@ -8,8 +8,9 @@
     "start": "next start",
     "export": "next export",
     "deploy": "npm run build && npm run export",
-    "codegen": "contentful-typescript-codegen --output @types/generated/contentful.d.ts",
-    "tsc": "tsc --noEmit"
+    "lint": "next lint",
+    "tsc": "tsc --noEmit",
+    "codegen": "contentful-typescript-codegen --output @types/generated/contentful.d.ts"
   },
   "dependencies": {
     "@emotion/babel-plugin": "^11.1.2",
@@ -45,6 +46,8 @@
   "devDependencies": {
     "@types/gtag.js": "^0.0.8",
     "@types/react-syntax-highlighter": "^13.5.2",
+    "eslint": "8.10.0",
+    "eslint-config-next": "12.1.0",
     "prettier": "^2.5.1"
   }
 }
