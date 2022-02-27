@@ -18,6 +18,12 @@ type Params = {
 export const getStaticProps: GetStaticProps = async ({ params, preview = false }: GetStaticPropsContext<Params>) => {
   const post = preview ? await getPreviewPostData(params.id) : await getPostData(params.id)
   const profile = await getProfileData()
+
+  if (post === undefined) {
+    return {
+      notFound: true;
+    }
+  }
   return {
     props: {
       post,
