@@ -9,7 +9,7 @@ export default function Tag({children, slug}: {
 }) {
   return (
     <Link href={`/tags/${slug}`}>
-      <span css={styles.tag}>{children}</span>
+      <a css={styles.tag}>{children}</a>
     </Link>
   )
 }

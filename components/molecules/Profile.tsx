@@ -11,7 +11,7 @@ export default function Profile({ data }: { data: IProfile }) {
       <div css={styles.contents}>
         <div css={styles.contentsHeader}>
           <h3 css={styles.name}>{data.fields.name}</h3>
-          <a css={styles.twitter} href={`https://twitter.com/${data.fields.twitterId}`} target="_blank">
+          <a css={styles.twitter} href={`https://twitter.com/${data.fields.twitterId}`} target="_blank" rel="noreferrer">
             <Image
               src="/logos/twitter-logo-blue.svg"
               width={20}

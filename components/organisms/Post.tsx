@@ -1,10 +1,8 @@
 import { css } from '@emotion/react'
-import { useEffect, useRef } from 'react';
 import Date from '../atoms/Date'
 import Tag from '../atoms/Tag'
 import variables from '../../lib/styles/variables'
 import postContent from '../../lib/styles/postContent'
-import setAttributeToExternalLink from '../../lib/utils/setAttributeToExternalLink'
 import { IPosts } from '../../@types/generated/contentful';
 import { Markdown } from '../molecules/Markdown';
 
