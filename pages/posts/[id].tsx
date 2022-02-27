@@ -8,7 +8,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getAllPostsIds()
   return {
     paths,
-    fallback: true
+    fallback: 'blocking'
   }
 }
 
@@ -29,7 +29,8 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
       post,
       profile,
       preview,
-    }
+    },
+    revalidate: 1,
   }
 }
 

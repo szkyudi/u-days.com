@@ -7,7 +7,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getAllPageSlugs()
   return {
     paths,
-    fallback: true
+    fallback: 'blocking'
   }
 }
 
@@ -25,7 +25,8 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
     props: {
       page,
       preview,
-    }
+    },
+    revalidate: 1,
   }
 }
 
