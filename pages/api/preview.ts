@@ -1,16 +1,30 @@
-import { getPreviewPostData } from "../../lib/posts"
+import { NextApiRequest, NextApiResponse } from "next"
+import { CONTENT_TYPE } from "../../@types/generated/contentful"
+import { getPreviewData } from "../../lib/preview"
 
-export default async (req, res) => {
-  if (req.query.secret !== process.env.CONTENTFUL_PREVIEW_SECRET_TOKEN || !req.query.id) {
+interface Request extends NextApiRequest  {
+  query: {
+    secret: string;
+    id: string;
+    type: CONTENT_TYPE;
+  }
+}
+export default async (req: Request, res: NextApiResponse) => {
+  if (req.query.secret !== process.env.NEXT_PUBLIC_CONTENTFUL_PREVIEW_SECRET_TOKEN || !req.query.id) {
     return res.status(401).json({ messae: 'Invalid token'})
   }
 
-  const post = await getPreviewPostData(req.query.id)
+  const data = await getPreviewData(req.query.id)
 
-  if (!post) {
+  if (!data) {
     return res.status(401).json({ message: 'Invalid id'})
   }
 
   res.setPreviewData({})
-  res.redirect(`/posts/${post.sys.id}`)
+  switch (req.query.type) {
+    case 'posts':
+      res.redirect(`/posts/${data.sys.id}`)
+    case 'page':
+      res.redirect(`/${data.fields.slug}`)
+  }
 }
