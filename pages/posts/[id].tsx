@@ -21,7 +21,7 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
 
   if (post === undefined) {
     return {
-      notFound: true;
+      notFound: true
     }
   }
   return {
