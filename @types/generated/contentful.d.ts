@@ -9,6 +9,9 @@ export interface IPageFields {
 
   /** Body */
   body: string;
+
+  /** Slug */
+  slug: string;
 }
 
 /** 固定ページ */
@@ -130,4 +133,4 @@ export type CONTENT_TYPE = "page" | "posts" | "profile" | "tags";
 
 export type LOCALE_CODE = "ja";
 
-export type CONTENTFUL_DEFAULT_LOCALE_CODE = "ja";
+export type NEXT_PUBLIC_CONTENTFUL_DEFAULT_LOCALE_CODE = "ja";
