@@ -7,7 +7,16 @@ import { Markdown } from './Markdown'
 export default function Profile({ data }: { data: IProfile }) {
   return (
     <div css={styles.profile}>
-      {data.fields.icon ? <img css={styles.img} src={data.fields.icon?.fields.file.url} alt={data.fields.icon.fields.title} /> : ''}
+      {data.fields.icon &&
+        <div css={styles.imgWrapper}>
+          <Image
+            width={80}
+            height={80}
+            src={`https:${data.fields.icon?.fields.file.url}`}
+            alt={data.fields.icon.fields.title}
+          />
+        </div>
+      }
       <div css={styles.contents}>
         <div css={styles.contentsHeader}>
           <h3 css={styles.name}>{data.fields.name}</h3>
@@ -34,10 +43,10 @@ const styles = {
     flex-wrap: wrap;
     ${variables.rounded};
   `,
-  img: css`
+  imgWrapper: css`
     width: 80px;
     height: 80px;
-    object-fit: cover;
+    overflow: hidden;
     border-radius: 50%;
   `,
   contents: css`
