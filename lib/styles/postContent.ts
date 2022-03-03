@@ -22,7 +22,7 @@ const postContent = css`
   h4 {
     font-size: 16px;
   }
-  p + p {
+  * + p {
     margin-top: 0.6em;
   }
   a {
@@ -58,6 +58,13 @@ const postContent = css`
     @media screen and (min-width: ${variables.breakpoints.md}px) {
       max-height: 600px;
     }
+  }
+  blockquote {
+    font-style: italic;
+    color: ${variables.color.textSub};
+    line-height: 1.5;
+    padding-left: 1em;
+    border-left: 2px solid ${variables.color.textMuted};
   }
 `;
 
