@@ -25,7 +25,7 @@ export default function Post({ post }: { post: IPosts }) {
             <Image
               width={post.fields.thumbnail.fields.file.details.image.width}
               height={post.fields.thumbnail.fields.file.details.image.height}
-              src={`http:${post.fields.thumbnail.fields.file.url}`}
+              src={`https:${post.fields.thumbnail.fields.file.url}`}
               alt={post.fields.thumbnail.fields.title}
             />
           </div>

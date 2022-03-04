@@ -8,12 +8,18 @@ import Header from '../../components/organisms/Header'
 import Footer from '../../components/organisms/Footer'
 import Page from '../../components/organisms/Page'
 import { IPage } from '../../@types/generated/contentful'
+import { Seo } from '../organisms/Seo'
+import { useRouter } from 'next/router'
 
 export default function PageTemplate({ page }: { page: IPage }) {
+  const router = useRouter()
   return (
     <>
       <Head>
-        <title>{page.fields.title}{config.titleSeperator}{config.title}</title>
+        <Seo
+          title={page.fields.title + config.titleSeperator + config.title}
+          url={config.siteUrl + router.asPath}
+        />
       </Head>
       <Header />
       <section css={styles.section}>

@@ -8,15 +8,25 @@ import variables from '../../lib/styles/variables'
 import utils from '../../lib/styles/utils'
 import Profile from '../molecules/Profile'
 import { IPosts, IProfile } from '../../@types/generated/contentful'
+import config from '../../lib/config'
+import { useRouter } from 'next/router'
+import { Seo } from '../organisms/Seo'
 
 export default function PostTemplate({ post, profile }: {
    post: IPosts,
    profile: IProfile
 }) {
+  const router = useRouter()
   return (
     <>
       <Head>
-        <title>{post.fields.title}</title>
+        <Seo
+          title={post.fields.title + config.titleSeperator + config.title}
+          url={config.siteUrl + router.asPath}
+          imageUrl={post.fields.thumbnail.fields.file.url}
+          width={post.fields.thumbnail.fields.file.details.image.width}
+          height={post.fields.thumbnail.fields.file.details.image.height}
+        />
       </Head>
       <Header />
       <main css={styles.main}>
