@@ -15,7 +15,7 @@ export const Seo = ({ title, url, description, type = 'article', imageUrl, width
       <title>{title}</title>
       <meta property='og:title' content={title} />
       <meta name="description" content={description || config.description} />
-      <meta property='og:url' content={url || config.hostname} />
+      <meta property='og:url' content={url || config.siteUrl} />
       <meta property='og:title' content={title} />
       <meta property='og:type' content={type} />
       <meta property='og:description' content={description || config.description} />

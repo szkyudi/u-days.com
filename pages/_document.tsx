@@ -32,7 +32,7 @@ class MyDocument extends Document {
           <meta name='twitter:card' content='summary_large_image' />
           <meta name='twitter:site' content={`@${config.twitterId}`} />
           <meta name='twitter:player' content={`@${config.twitterId}`} />
-          <link rel="canonical" href={config.hostname} />
+          <link rel="canonical" href={config.siteUrl} />
         </Head>
         <body>
           <Main />

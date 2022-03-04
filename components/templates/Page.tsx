@@ -18,7 +18,7 @@ export default function PageTemplate({ page }: { page: IPage }) {
       <Head>
         <Seo
           title={page.fields.title + config.titleSeperator + config.title}
-          url={router.asPath}
+          url={config.siteUrl + router.asPath}
         />
       </Head>
       <Header />
