@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
+import config from '../lib/config'
 import { GA_TRACKING_ID } from '../lib/gtag'
 
 class MyDocument extends Document {
@@ -26,7 +27,12 @@ class MyDocument extends Document {
           <link rel="icon" href="/favicon.ico" />
           <link rel="shortcut icon" href="/favicon.ico" />
           <link rel="apple-touch-icon" href="/favicon.ico" />
-          <meta name="description" content="とあるWEBエンジニアの技術ブログです。主にWEBフロントエンド技術に関する記事を公開しています。" />
+          <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+          <meta property='og:site_name' content={config.title} />
+          <meta name='twitter:card' content='summary_large_image' />
+          <meta name='twitter:site' content={`@${config.twitterId}`} />
+          <meta name='twitter:player' content={`@${config.twitterId}`} />
+          <link rel="canonical" href={config.hostname} />
         </Head>
         <body>
           <Main />
