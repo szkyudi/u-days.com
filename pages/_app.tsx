@@ -9,6 +9,7 @@ import highlight from "highlight.js/styles/github.css";
 import commonStyle from '../lib/styles/common'
 import nprogressStyle from '../lib/styles/nprogress'
 import { RecoilRoot } from 'recoil';
+import { Seo } from '../components/organisms/Seo';
 
 NProgress.configure({
     minimum: 0.2,
@@ -25,6 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <RecoilRoot>
       <Global styles={[css`${destyle}`, css`${highlight}`, nprogressStyle, commonStyle]} />
+      <Seo />
       <Component {...pageProps} />
     </RecoilRoot>
   )
