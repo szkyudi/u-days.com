@@ -15,12 +15,10 @@ export default function PageTemplate({ page }: { page: IPage }) {
   const router = useRouter()
   return (
     <>
-      <Head>
-        <Seo
-          title={page.fields.title + config.titleSeperator + config.title}
-          url={config.siteUrl + router.asPath}
-        />
-      </Head>
+      <Seo
+        title={page.fields.title + config.titleSeperator + config.title}
+        url={config.siteUrl + router.asPath}
+      />
       <Header />
       <section css={styles.section}>
         <Paper>

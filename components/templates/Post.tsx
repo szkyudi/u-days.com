@@ -19,15 +19,13 @@ export default function PostTemplate({ post, profile }: {
   const router = useRouter()
   return (
     <>
-      <Head>
-        <Seo
-          title={post.fields.title + config.titleSeperator + config.title}
-          url={config.siteUrl + router.asPath}
-          imageUrl={'https:' + post.fields.thumbnail.fields.file.url}
-          width={post.fields.thumbnail.fields.file.details.image.width}
-          height={post.fields.thumbnail.fields.file.details.image.height}
-        />
-      </Head>
+      <Seo
+        title={post.fields.title + config.titleSeperator + config.title}
+        url={config.siteUrl + router.asPath}
+        imageUrl={'https:' + post.fields.thumbnail.fields.file.url}
+        width={post.fields.thumbnail.fields.file.details.image.width}
+        height={post.fields.thumbnail.fields.file.details.image.height}
+      />
       <Header />
       <main css={styles.main}>
         <section>
