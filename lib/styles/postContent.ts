@@ -3,6 +3,7 @@ import variables from "./variables";
 
 const postContent = css`
   line-height: 1.8;
+  word-break: break-word;
   h2,
   h3,
   h4,
