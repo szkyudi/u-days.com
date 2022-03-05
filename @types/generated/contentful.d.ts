@@ -9,6 +9,9 @@ export interface IExternalPostFields {
 
   /** url */
   url: string;
+
+  /** mediaName */
+  mediaName: string;
 }
 
 /** 外部サイトの関連記事 */
