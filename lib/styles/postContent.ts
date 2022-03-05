@@ -66,6 +66,16 @@ const postContent = css`
     padding-left: 1em;
     border-left: 2px solid ${variables.color.textMuted};
   }
+  // GitHubから参照
+  *:not(pre) code {
+    padding: 0.2em 0.4em;
+    font-size: 85%;
+    background-color: rgba(175, 184, 193, 0.2);
+    border-radius: 6px;
+    font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
+      Liberation Mono, monospace;
+    vertical-align: 0.075em;
+  }
 `;
 
 export default postContent;
