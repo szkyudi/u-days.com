@@ -22,9 +22,9 @@ export default function PostTemplate({ post, profile }: {
       <Seo
         title={post.fields.title + config.titleSeperator + config.title}
         url={config.siteUrl + router.asPath}
-        imageUrl={'https:' + post.fields.thumbnail.fields.file.url}
-        width={post.fields.thumbnail.fields.file.details.image.width}
-        height={post.fields.thumbnail.fields.file.details.image.height}
+        imageUrl={post.fields.thumbnail && 'https:' + post.fields.thumbnail.fields.file.url}
+        width={post.fields.thumbnail && post.fields.thumbnail.fields.file.details.image.width}
+        height={post.fields.thumbnail && post.fields.thumbnail.fields.file.details.image.height}
       />
       <Header />
       <main css={styles.main}>
