@@ -3,6 +3,33 @@
 import { Asset, Entry } from "contentful";
 import { Document } from "@contentful/rich-text-types";
 
+export interface IExternalPostFields {
+  /** title */
+  title: string;
+
+  /** url */
+  url: string;
+}
+
+/** 外部サイトの関連記事 */
+
+export interface IExternalPost extends Entry<IExternalPostFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "externalPost";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
 export interface IPageFields {
   /** Title */
   title: string;
@@ -129,8 +156,13 @@ export interface ITags extends Entry<ITagsFields> {
   };
 }
 
-export type CONTENT_TYPE = "page" | "posts" | "profile" | "tags";
+export type CONTENT_TYPE =
+  | "externalPost"
+  | "page"
+  | "posts"
+  | "profile"
+  | "tags";
 
 export type LOCALE_CODE = "ja";
 
-export type NEXT_PUBLIC_CONTENTFUL_DEFAULT_LOCALE_CODE = "ja";
+export type CONTENTFUL_DEFAULT_LOCALE_CODE = "ja";
