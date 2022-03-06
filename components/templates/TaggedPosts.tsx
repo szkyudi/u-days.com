@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Header from '../organisms/Header'
-import PostList from '../organisms/PostList'
 import Footer from '../organisms/Footer'
 import { IPosts, IProfile, ITags } from '../../@types/generated/contentful'
 import { styles } from './styles/home'
