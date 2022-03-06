@@ -7,11 +7,17 @@ import { getProfileData } from '../lib/profile'
 export const getServerSideProps: GetServerSideProps = async ({query}: {query: any}) => {
   const posts = await getSortedPostsData(query.keyword)
   const profile = await getProfileData()
-  return {
-    props: {
-      keyword: query.keyword,
-      posts,
-      profile
+  if (query.keyword) {
+    return {
+      props: {
+        keyword: query.keyword,
+        posts,
+        profile
+      }
+    }
+  } else {
+    return {
+      notFound: true
     }
   }
 }

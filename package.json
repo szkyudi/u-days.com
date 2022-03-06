@@ -10,7 +10,8 @@
     "deploy": "npm run build && npm run export",
     "lint": "next lint",
     "tsc": "tsc --noEmit",
-    "codegen": "contentful-typescript-codegen --output @types/generated/contentful.d.ts"
+    "codegen": "contentful-typescript-codegen --output @types/generated/contentful.d.ts",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@emotion/babel-plugin": "^11.1.2",
@@ -48,6 +49,7 @@
     "@types/react-syntax-highlighter": "^13.5.2",
     "eslint": "8.10.0",
     "eslint-config-next": "12.1.0",
+    "next-sitemap": "^2.5.4",
     "prettier": "^2.5.1"
   }
 }
