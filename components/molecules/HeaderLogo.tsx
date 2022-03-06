@@ -5,7 +5,7 @@ import Image from 'next/image'
 export default function HeaderLogo() {
   return (
     <h1>
-      <Link href="/">
+      <Link href="/" passHref>
         <a css={styles.link}>
           <span css={styles.imageWrapper}>
             <Image
