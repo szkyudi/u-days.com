@@ -6,12 +6,12 @@ export default function FooterList() {
   return (
     <ul css={styles.list}>
       <li css={styles.item}>
-        <Link href="/contact">
+        <Link href="/contact" passHref>
           <a css={styles.link}>お問い合わせ</a>
         </Link>
       </li>
       <li css={styles.item}>
-        <Link href="/privacy-policy">
+        <Link href="/privacy-policy" passHref>
           <a css={styles.link}>プライバシーポリシー</a>
         </Link>
       </li>
