@@ -17,13 +17,13 @@ export default function SearchButton() {
   }
 
   return (
-    <>
+    <span css={styles.wrapper}>
       {isActive ?
         <Image
           css={styles.button}
           src="/icons/close.svg"
-          width={24}
-          height={24}
+          width={48}
+          height={48}
           alt="閉じるアイコン"
           onClick={inactivate}
         />
@@ -31,18 +31,22 @@ export default function SearchButton() {
         <Image
           css={styles.button}
           src="/icons/search.svg"
-          width={24}
-          height={24}
+          width={48}
+          height={48}
           alt="検索アイコン"
           onClick={activate}
         />
       }
-    </>
+    </span>
   )
 }
 
 
 const styles = {
+  wrapper: css`
+    width: 24px;
+    height: 24px;
+  `,
   button: css`
     transition: .2s;
     &:hover {
