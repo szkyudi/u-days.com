@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /search?
+
+# Host
+Host: https://u-days.com
+
+# Sitemaps
+Sitemap: https://u-days.com/sitemap.xml
