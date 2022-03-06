@@ -1,18 +1,22 @@
 import { css } from '@emotion/react'
 import Link from 'next/link'
-import variables from '../../lib/styles/variables'
-import Date from '../atoms/Date'
+import variables from '../../../lib/styles/variables'
+import Date from '../../atoms/Date'
 
-export default function LinkedCard({href, title, date}) {
+type Props = {
+  title: string,
+  date?: string,
+}
+export const Card = ({title, date, ...props}: Props) => {
   return (
-    <Link href={href}>
-      <a css={styles.card}>
-        <h3 css={styles.title}>{title}</h3>
+    <div css={styles.card} {...props}>
+      <h3 css={styles.title}>{title}</h3>
+      {date && (
         <span css={styles.date}>
           <Date dateString={date} />
         </span>
-      </a>
-    </Link>
+      )}
+    </div>
   )
 }
 
@@ -39,9 +43,6 @@ const styles = {
       cursor: pointer;
       box-shadow: ${variables.shadow.dp2};
       transform: translateY(-1px);
-    }
-    & + & {
-      margin-top: ${variables.space.sm};
     }
     @media (min-width: ${variables.breakpoints.lg}px) {
       padding: ${titleFontSize.lg};
